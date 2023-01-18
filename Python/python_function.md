@@ -1,7 +1,7 @@
 # Python 함수
 
 ### 함수 정의
-```
+``` python
 def function_name(paramter):
     # code block
     return return_value
@@ -10,7 +10,7 @@ def function_name(paramter):
 - Return문이 없으면, None을 반환
 
 ### Print 와 Return의 차이 구분하기!
-```
+```python
   def print(x,y):
     if x < y:
         print(y)
@@ -18,7 +18,7 @@ def function_name(paramter):
         print(x)
 ```
    print(2,3) 하면 결과: 3 None
-```
+```python
  def print(x,y):
     if x < y:
         return(y)
@@ -39,7 +39,7 @@ print(2,3) 하면 결과: 3
 - Namespace 여러 개 존재, 같은 이름이 여러 곳에 존재할 수도 있다. 
 - Local 부터 찾다가 Enclosing, Global, Built-in 순서로 찾음(scope 는 LEGB 순서)
 -  예시: Local & Enclosing Namespace
-```
+```python
 def func1():
     print('func1 start') #Enclosed
 
@@ -53,7 +53,7 @@ def func1():
 func1()
 ```
 - 예시: Global에서 변수 찾기
-```
+```python
 x = 'global'
 
 def func1():
@@ -65,7 +65,7 @@ def func1():
 func1() #global
 ```
 - 예시 : Enclosed 에서 변수 찾기
-```
+```python
 x = 'global'
 
 def func1():
@@ -77,7 +77,7 @@ def func1():
 func1() #enclosed
 ```
 - 예시 : Local 에서 변수 찾기
-```
+```python
 x = 'global'
 
 def func1():
@@ -91,7 +91,7 @@ def func1():
 func1()  #local
 ```
 - mutable 객체 이용(이후에 배움)
-```
+```python
 my_list = [1,2,3,4]
 
 def func1():
@@ -102,7 +102,7 @@ func1()
 print(my_list)
 ```
 - Global and Nonlocal 예시
-```
+```python
 x = 1
 
 def func1():

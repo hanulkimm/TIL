@@ -2,14 +2,14 @@
 
 ## 조건문
 ### 기본 형식
-```
+```python
 if 조건 ==  True:
     #Run this code
 else:
     #Run this code
 ```
 - 예시: 홀수, 짝수 구분
-```
+```python
 num = int(input())
 if num % 2:  # num % 2 == 1
     print('odd')
@@ -19,7 +19,7 @@ else:
    
 
 ### 복수 조건문
-```
+```python
 if 조건:
     # Code
 elif 조건:
@@ -31,7 +31,7 @@ else:
 ```
 ### 중첩 조건문
 - 들여쓰기 조심하기
-```
+```python
 if 조건:
     # Code
     if  조건:
@@ -42,12 +42,12 @@ else:
 
 ### 조건 표현식
 
-```
+```python
 true인 경우 값 if 조건 else false인 경우 값
 ```
 
 - 예시: 홀수, 짝수 구분
-```
+```python
 num = int(input())
 result = 'odd' if num % 2 else 'even'
 print(result)
@@ -57,12 +57,12 @@ print(result)
 ### While 문
 - 특정 조건(조건이 참)을 따를 때, 반복하여 코드 실행
 - 종료 조건 코드 통해 종료해야 함
-```
+```python
 while 조건:
     # Code
 ```
 - 예시
-```
+```python
 a = 0
 while a < 5:
     print(a)
@@ -73,12 +73,12 @@ print('끝')
 ### For 문
 - 반복 횟수를 알 때(가늠 가능할 때), 유용
 - 별도 종료 조건 필요 없음
-```
+```python
 for 변수명 in iterable:
     # Code
 ```
 - 예시: 사용자 입력 문자의 한 글자씩 출력
-```
+```python
 chars = input()
 for char in chars:
     print(char)
@@ -89,14 +89,14 @@ for char in chars:
       - values(): value로 구성된 결과
       - items(): (key,value)의 튜플로 구성된 결과
 
-```
+```python
 grades = {'Anna' : 80, 'Tom' : 90}
 print(grades.keys())  #dict_keys(['Anna', 'Tom'])
 for students in grades.items():
     print(students,grades)
 ```
 - enumerate 순회: (index,value) 형태의 tuple로 구성된 열거 객체 반환
-```
+```python
 members = ['kim','park','lee']
 for idx, number in enumerate(members):
     print(idx, number)
@@ -104,14 +104,14 @@ for idx, number in enumerate(members):
 
 - List Comprehension: 
   - 리스트를 간결하게 생성하는 방법
-```
+```python
 code for 변수 in iterable
 code for 변수 in iterable if 조건식 
 ```
  
 - Dictionary Comprehension
   - 딕셔너리를 간결하게 생성하는 방법
-```
+```python
 {key:value for 변수 in iterable}
 {key:value for 변수 in iterable if 조건식}
 ```
@@ -123,7 +123,7 @@ code for 변수 in iterable if 조건식
     - break통해 중간에 종료되는 경우, else문 실행하지 않음
 - Pass: 아무것도 하지 않음
 - 예시 : 5의 배수 프린트 말고 5의 배수가 아니면 프린트
-```
+```python
 for i in range(100):
     if i % 5 == 0
         continue
@@ -136,7 +136,7 @@ for i in range(100):
 - 윤년 판별 조건: 
     - 해가 4의 배수이면서 100의 배수가 아니면 윤년
     - 400의 배수이면 윤년
-```
+```python
 year = int(input())
 if (year % 4 == 0 and year % 100 != 0) or year % 400 == 0:
     print('윤년')
@@ -147,7 +147,7 @@ else:
 2. 끝말잇기 
 - 끝말잇기 리스트 주어질 때, 탈락하는 사람 구하기
 - 끝말잇기 틀리거나 중복되는 단어 말할 때, 탈락
-```
+```python
 words = ["python" , "nap", "python" , "nerd" , "dune", "egg"]
 
 for idx in range(1,len(words)):
@@ -159,7 +159,7 @@ for idx in range(1,len(words)):
 
 ```
 - 또 다른 문제 풀이 (Flag 이용하기)
-```
+```python
 words = ["python" , "nap", "python" , "nerd" , "dune", "egg"]
 
 flag = False

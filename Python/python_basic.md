@@ -7,7 +7,7 @@
 - 식별자 : 변수의 이름, 읽고 쉽고 이해하기 쉽게 짓는 것이 중요
   - 규칙: 영문 알파벳, _ , 숫자로 구성, 대소문자 구별
   - 내장 함수나 모듈 이름 사용하지 말 것
-  ```
+  ```python
   print(5)
   print = 'hi'
   print(5) # 에러 발생
@@ -48,7 +48,7 @@
     - 문자열 더하면 문자열 연결
     - 곱하면 곱한만큼 출력
   - String Interpolation : f-string 이용하기
-    ```
+    ```python
     name = "Hanul'
     score = '4.0'
     print(f'Hi, {name}! Your score is {score}.')
@@ -57,7 +57,7 @@
 
 - None
   - 값이 없음을 표현하기 위함
-  ```
+  ```python
   a = print('Hi') # Hi 
   print(a) # None
   ```
@@ -77,7 +77,7 @@
   - 단축평가 
   : `and` 첫번째 값이 False이면, 무조건 False -> 첫번째 값 반환  
   : `or` 첫번째 값이 True 이면, 무조건 True -> 첫번째 값 반환
-  ````
+  ````python
   print(3 and 5) #5
   print(0 and 3) #0
   print(5 or 3) #5
@@ -100,7 +100,7 @@
   - () 또는 tuple()통해 생성  
   - 불변하다
   - 단일 항목 시, 값 뒤에 쉼표 붙여야 함
-  ```
+  ```python
   a = (1,)
   print(type(a)) # tuple
   b = (1)
@@ -124,7 +124,7 @@
 데이터 형태를 변환하는 것
 
 - 암시적 형 변환(Implicit): 의도하지 않고 자료형 변환  
-  ```
+  ```python
   print(True + 2) # 3  
   if []:` # [] false
   ```
