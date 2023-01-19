@@ -27,96 +27,64 @@ def function_name(paramter):
 ```
 print(2,3) 하면 결과: 3
 
-## 파이썬의 범위(Scope)
+## 내장 함수
 
-### Namespace : 식별자 기억하는 공간
-
-1. Built-in
-2. Global : .py file 안에
-3. Enclosing
-4. Local: 함수 안에 생성된 namespace
-
-- Namespace 여러 개 존재, 같은 이름이 여러 곳에 존재할 수도 있다. 
-- Local 부터 찾다가 Enclosing, Global, Built-in 순서로 찾음(scope 는 LEGB 순서)
--  예시: Local & Enclosing Namespace
+**Map**
 ```python
-def func1():
-    print('func1 start') #Enclosed
-
-    def func2():
-        print('func2 start') #Local
-        print('func2 end')
-        return
-    func2()
-    return
-
-func1()
+map(function,iterable)
 ```
-- 예시: Global에서 변수 찾기
+- iterable의 모든 요소에 함수 적용
+- map object 으로 변환, 형변환 필요함
+    - 입력한 개수 만큼의 변수가 있다면 형변환 필요없음
+
+**Filter**
 ```python
-x = 'global'
-
-def func1():
-
-    def func2():
-        print(x)
-    func2()
-
-func1() #global
+filter(function,iterable)
 ```
-- 예시 : Enclosed 에서 변수 찾기
+- iterable의 모든 요소에 function 적용하고 결과가 True인 것들만 반환
+- 리스트 형변환 통해 결과 확인 할 수 있음
+- 예시: 홀수 숫자 출력
 ```python
-x = 'global'
-
-def func1():
-    x = 'enclosed'
-    def func2():
-        print(x)
-    func2()
-
-func1() #enclosed
+def odd(n):
+    return n % 2
+numbers = [1,2,3]
+result = filter(odd,numbers)
+print(type(result)) # filter
+print(list(result)) # list 로 형변환
 ```
-- 예시 : Local 에서 변수 찾기
+**Zip**
 ```python
-x = 'global'
-
-def func1():
-    
-    def func2():
-        x = 'local'
-        print(x)
-
-    func2()
-
-func1()  #local
+zip(*iterables)
 ```
-- mutable 객체 이용(이후에 배움)
+- 복수의 iterable을 모아 tuple을 원소로 하는 zip object 반환
+- 예시
 ```python
-my_list = [1,2,3,4]
+name_list = ['kim','lee','park']
+age_list = [19,17,18]
+print(list(zip(name_list,age_list))) # 형변환
 
-def func1():
-    my_list[1] = 5
-
-func1()
-
-print(my_list)
-```
-- Global and Nonlocal 예시
-```python
-x = 1
-
-def func1():
-    x = 2
-
-    def func2():
-        # global x (# 3 2 3)
-        # nonlocal x (# 3 3 1)
-        x =3
-        print(x)
-    func2()
-    print(x)
-
-func1()
-print(x) # 3 2 1
+for name,age in zip(name_list,age_list):
+    print(name,age) 
 ```
 
+**Lambda**
+```python
+lambda 매개변수 : 표현식
+```
+- 예시
+```python
+result = map(lambda x : x* 10,[1,2,3])
+print(list(result)) #[10,20,30]
+```
+
+**재귀함수**
+- 자기 자신을 호출하는 함수
+- 1개 이상의 base case가 존재함, 수렴하도록 작성해야 한다
+- 예시: Factorial
+```python
+def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n-1)
+print(factorial(4))
+```
