@@ -65,7 +65,7 @@ print(all_list_sum(lst))
 
 # 5. 숫자의 의미
 # 정수로 이루어진 list 를 전달 받아 , 각 정수에 대응되는 아스키 문자를 이어붙인 문자열을 반환하는 get_secret_word 함수를 작성하시오 .
-# ''.join() 사용
+## Sol 1: ''.join() 사용
 lst = [83, 115, 65, 102, 89]
 def get_secret_word(lst):
     word = []
@@ -74,6 +74,15 @@ def get_secret_word(lst):
     return word
 
 print(''.join(get_secret_word(lst)))
+
+## Sol 2: print 옵션 end=''사용, return 사용 안함
+lst = [83, 115, 65, 102, 89]
+
+def get_secret_word(lst):
+    for i in lst:
+        print(chr(i),end='')
+get_secret_word(lst)
+
 
 # 6. 내 이름은 몇일까?
 #문자열을 전달 받아 해당 문자열의 각 문자에 대응되는 아스키 숫자들의 합을 반환하는 get_secret_number 함수를 작성하시오 . 단 , 문자열은 A~Z, a~z 로만 구성되어 있다
