@@ -1,8 +1,8 @@
 # 1. 간단한 N의 약수
 # 정수 N의 약수를 오름차순으로 출력하는 프로그램을 작성하시오.
 
+## Sol 1
 N = int(input())
-
 result = []
 
 for i in range(1,N+1):
@@ -11,6 +11,12 @@ for i in range(1,N+1):
     else:
         continue
 print(result)
+
+## Sol 2 (print의 옵션 end 이용)
+N = int(input())
+for i in range(1,N+1):
+    if N % i == 0:
+        print(i,end=',')
 
 
 # 2. List의 합 구하기
