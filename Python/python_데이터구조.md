@@ -15,13 +15,14 @@ s.find(x) # x의 첫번째 위치 반환, 없으면 -1 반환
 s.index(x) # x의 첫번째 위치 반환, 없으면 오류 발생
 s.isupper(x) # 대문자 여부
 s.islower(x) # 소문자 여부
-s.isalpha() # 알파벳 문자 여부
+s.isalpha() # 알파벳 문자 여부(숫자 제외)
 s.isdigit() # 숫자 여부
+s.isspace() # 공백 여부, 문자열이 모두 공백이면 True
 ```
 - 주요 문자열 변경 메서드
 ```python
-s.replace(old,new, [,count]) # 바꿀 대상을 새로운 글자로 바꿔서 반환, count 개수 만큼 시행
-s.strip([chars]) # 공백이나 특정 문자 제거, lstrip/rstrip 통해 왼쪽/오른쪽 제거
+s.replace(old,new, [,count]) # 바꿀 대상을 새로운 글자로 바꿔서 반환, count 개수 만큼 old를 new로 바꿈
+s.strip([chars]) # 공백이나 특정 문자 제거, lstrip/rstrip 통해 왼쪽/오른쪽 제거, 특정문자 지정하면 그 문자 제거(모든 조합을 이용해서)
 s.split() # 공백이나 특정 문자를 기준으로 분리
 'seperator'.join([iterable]) # 구분자로 iterable를 합침, iterable에 문자열이 아닌 값이 있으면 TypeError 발생
 s.capitalize() # 가장 첫 번째 글자를 대문자로 변경
@@ -49,8 +50,15 @@ l.count(x) # 항목 x 개수 반환
 
 # 예시
 cafe =['starbucks','coffeebean']
+cafe.extend(['hollys'])
 cafe.extend('cup')
-print(cafe) # ['starbucks','coffeebean','c','u','p']
+print(cafe) # ['starbucks','coffeebean','hollys', 'c','u','p']
+# 예시: 원하는 값을 모두 삭제.
+a = [1, 2, 1, 3, 4]
+target_value = 1
+for i in range(a.count(target_value)):
+    a.remove(target_value)
+print(a)
 ```
 - sort와 sorted 구분!
 sort()는 원본을 변경하지만 sorted은 원본 변경이 없음, 새로운 변수에 지정을 해주어야 한다.
