@@ -180,3 +180,198 @@ person1.number_of_popoulation() # 인구수는 2입니다.
 person2.number_of_popoulation() # 인구수는 2입니다.
 ```
 
+### 데코레이터
+- 함수를 어떤 함수로 꾸며서 새로운 기능을 부여
+- @데코레이터(함수명) 형태로 함수 위에 작성
+- 작성 순서 중요, 순서대로 적용되기 때문
+```python
+def emoji_decorator(func):
+    def wrapper(name):
+        func(name)
+        print('^^')
+    return wrapper
+
+@emoji_decorator
+def kor_hello(name):
+    print('안녕하세요. {name}님!')
+    
+@emoji_decorator
+def eng_hello(name):
+    print('Hello. {name}!')
+
+kor_hello('Hanul') # 안녕하세요. Hanul님! \n ^^
+```
+
+## 스태틱 메서드
+- 인스턴스 변수, 클래스 변수를 전혀 다루지 않는 메서드
+- 속성을 다루지 않고 단지 기능(행동)만을 하는 메서드 정의할 때 사용
+- `@staticmethod` 데코레이터 사용하여 정의
+- 클래스 또는 인스턴스로 접근 가능
+```python
+class Myclass:
+
+    @staticmethod
+    def static_method(*args)
+```
+
+# 객체 지향 핵심 개념 4가지
+
+## 추상화
+- 필요한 것만 들어내고 복잡한 것은 숨기기
+```python
+class Student:
+    def __init__(self, name, age, gpa):
+        self.name = name
+        self.age = age
+        self.gpa = gpa
+    def talk(self):
+        print(f'반갑습니다. {self.name}입니다.')
+
+class Professor:
+    def __init__(self, name, age, department):
+        self.name = name
+        self.age = age
+        self.department = department
+    def talk(self):
+        print(f'반갑습니다.{self.name}입니다')
+
+class Person: # 추상화
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    def talk(self):
+        print(f'반갑습니다.{self.name}입니다')
+
+```
+
+## 상속
+- 클래스는 상속이 가능함, 두 클래스 사이 간 부모-자식 관계를 정립하는 것
+- 하위 클래스는 상위 클래스의 속성(데이터)과 행동(메서드)을 모두 상속 받음
+- 코드 재사용성이 높아짐
+```python
+class ChildClass(ParentClass):
+    pass
+```
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    def talk(self): # 재사용할 메서드
+        print(f'반갑습니다.{self.name}입니다')
+
+class Student(Person):
+    def __init__(self, name, age, gpa):
+        self.name = name
+        self.age = age
+        self.gpa = gpa
+class Professor(Person):
+    def __init__(self, name, age, department):
+        self.name = name
+        self.age = age
+        self.department = department
+
+s1 = Student('김하늘', 24, 4.0)
+p1 = Professor('홍길동', 49, '컴공')
+
+s1.talk() # 반갑습니다. 김하늘입니다.
+p1.talk() # 반갑습니다. 홍길동입니다.
+```
+
+### 상속 관련 함수와 메서드
+- `isinstance(object,classinfo)` : classinfo의 instance거나 subclass인 경우 True
+    - `print(isinstance(s1,Person))` # True 
+- `issubclass(class, classinfo)` : class가 classinfo의 subclass면 True
+    - `print(issubclass(Professor, (Person, Student)))` # True
+- `super()` : 자식 클래스에서 부모 클래스를 사용하고 싶은 경우
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+class Student(Person):
+    def __init__(self, name, age, gpa):
+        super().__init__(name, age)
+        self.gpa = gpa
+```
+### 다중 상속
+- 두 개 이상의 클래스를 상속 받는 경우
+- 상속받은 모든 클래스의 요소 활용 가능
+- 중복된 속성이나 메서드 있는 경우 **순서에 의해 결정됨**
+```python
+class Person:
+    def __init__(self,name):
+        self.name = name
+class Mom(Person):
+    gene = 'XX'
+    def swim(self):
+        return '엄마가 수영'
+class Dad(Person):
+    gene = 'XY'
+    def walk(self):
+        return '아빠가 걷기'
+class Firstchild(Dad, Mom):
+    def swim(self):
+        return '첫째가 수영'
+baby = FirstChild('아가')
+print(baby.swim()) # 첫째가 수영
+print(baby.gene) # XY
+```
+
+## 다형성
+- 서로 다른 클래스에 객체들이 동일한 메세지에 대해 다른 방식으로 응답할 수 있음
+### 메서드 오버라이딩  
+- 클래스 상속 시, 부모 클래스에서 정의한 메서드를 자식 클래스에서 변경, 특정 기능을 바꾸고 싶을 때 사용
+- 부모 클래스의 메서드를 실행시키고 싶은 경우 super를 활용
+```python
+class Person:
+    def __init__(self, name):
+        self.name = name
+    def talk(self):
+        print(f'반갑습니다. {self.name}입니다')
+class Professor(Person):
+    def talk(self):
+        print(f'{self.name}일세')
+class Student(Person):
+    def talk(self):
+        super().talk()
+        print(f'저는 학생입니다.')
+p1 = Professor('김교수')
+p1.talk() # 김교수일세
+```
+## 캡슐화
+- 객체의 일부 구현 내용에 대해 외부로부터의 직접적인 엑세스를 차단
+
+### 접근제어자 종류
+- Public Access Modifer: 모두 가능
+  - 언더바 없이 시작하는 메서드나 속성, 더시서나 호출이 가능, 일반적인 메서드의 대다수를 차지
+- Protected Access Modifier: 상속 관계에서만 가능, 개념적으로만 존재
+  - 언더바 1개로 시작하는 메서드나 속성
+  - 
+- Private Access Modifier: 나만 가능
+  - 언더바 2개로 시작하는 메서드나 속성
+  - 클래스 내부에서만 사용 가능
+
+### getter 메서드와 setter 메서드
+- getter 메서드: 변수의 값을 읽는 메서드, @property 데코레이터 사용
+- setter 메서드:  변수의 값을 설정하는 성격의 메서드, @변수.setter 사용
+```python
+class Person:
+    def __init__(self, age):
+        self._age = age
+
+    @property
+    def age(self): # getter
+        print('getter 호출 !')
+        return self._age
+
+    @age.setter
+    def age(self, age): # setter
+        print('setter 호출 !')
+        self._age = age
+p1 = Person(17)
+p1.age = 20
+print(p1.age)
+```
+
