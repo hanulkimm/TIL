@@ -1,8 +1,3 @@
-'''
-444345
-102034
-667767
-'''
 import sys
 
 sys.stdin = open('input.txt', 'r')
@@ -14,6 +9,11 @@ for tc in range(t):
     for x in n:
         cnt[x] += 1
 
+# num = int(input())
+# for i in range(6):
+#     c[num%10] += 1
+#     num // 10
+
     rn = 0
     triplet = 0
     for i in range(10):
@@ -21,7 +21,7 @@ for tc in range(t):
             triplet += 1
             cnt[i] -= 3
     for i in range(8):
-        if cnt[i] == cnt[i + 1] == cnt[i + 2] == 1:
+        if cnt[i] >= 1 and cnt[i + 1] >= 1 and  cnt[i + 2] >= 1:  # 1 이상
             rn += 1
             cnt[i] -= 1
             cnt[i + 1] -= 1
