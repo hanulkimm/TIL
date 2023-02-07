@@ -5,60 +5,33 @@ sys.stdin = open('input.txt', 'r')
 t = int(input())
 
 def binarySearch(lst, n, key):
-    st = 0
-    end = n-1
+    start = 1
+    ed = n
     cnt = 1
-    while st < end:
-        median = (st+end)//2
-        if lst[median] == key:
+    while start < ed:
+        middle = int((start + ed) / 2)
+        if middle == key:
             return cnt
-        elif lst[median] < key:
-            st = median + 1
+        elif middle < key:
+            start = middle
             cnt += 1
         else:
-            end = median -1
+            ed = middle
             cnt += 1
     return cnt
 
 
 for tc in range(t):
     p, a, b = map(int, input().split())
-    st = 0
-    end = p-1
-    cnt_a = 1
     lst = list(range(1, p+1))
-    while st < end:
-        median = (st + end) // 2
-        if lst[median] == a:
-            st = 0
-            end = p-1
-            break
-        elif lst[median] < a:
-            st = median + 1
-            cnt_a += 1
-        else:
-            end = median - 1
-            cnt_a += 1
-
-    cnt_b = 1
-    while st < end:
-        median = (st + end) // 2
-        if lst[median] == b:
-            break
-        elif lst[median] < b:
-            st = median + 1
-            cnt_b += 1
-        else:
-            end = median - 1
-            cnt_b += 1
-
-    print(cnt_a, cnt_b)
+    cnt_a = binarySearch(lst, p, a)
+    cnt_b = binarySearch(lst, p, b)
 
     if cnt_a < cnt_b:
-        print('A')
+        print(f'#{tc+1} A')
     elif cnt_a > cnt_b:
-        print('B')
+        print(f'#{tc+1} B')
     else:
-        print(0)
+        print(f'#{tc+1} 0')
 
 
