@@ -18,3 +18,18 @@ for tc in range(t):
             ans.append('p')
 
     print(f'#{tc+1} ', *ans, sep='')
+
+'''
+Dictionary 사용하기
+dct = {'b':'d', 'd':'b', 'p':'q', 'q':'p'}
+
+t = int(input())
+
+for tc in range(t):
+    st = input()[::-1]
+    ans = []
+    for ch in st:
+        alst.append(dct[ch])
+
+
+'''
