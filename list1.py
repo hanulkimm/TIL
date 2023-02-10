@@ -227,3 +227,41 @@ for tc in range(10):
         if mx < sm:
             mx = sm
     print(f'#{tc+1} {mx}')    
+
+## 13998 새로운 버스 노선 ##
+
+t = int(input())
+for tc in range(t):
+    n = int(input())
+    cnt = [0] * 1001 # 0~1000
+    for _ in range(n):
+        tp, a, b = map(int, input().split())
+
+        if tp == 1:
+            for i in range(a, b+1):
+                cnt[i] += 1
+        if tp == 2:
+            cnt[a] += 1
+            cnt[b] += 1
+            for i in range(a+1,b):
+                if a % 2: # 홀수
+                    if i % 2: # 홀수
+                        cnt[i] += 1
+                else:
+                    if i % 2 == 0:
+                        cnt[i] += 1
+        if tp == 3:
+            cnt[a] += 1
+            cnt[b] += 1
+            for i in range(a+1, b):
+                if a % 2: # 홀수
+                    if i % 3 == 0 and i % 10 != 0 :
+                        cnt[i] += 1
+                else:  #짝수
+                    if i % 4 == 0:
+                        cnt[i] += 1
+    mx = 0
+    for i in cnt:
+        if mx < i:
+            mx = i
+    print(f'#{tc+1} {mx}')
