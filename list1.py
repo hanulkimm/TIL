@@ -265,3 +265,20 @@ for tc in range(t):
         if mx < i:
             mx = i
     print(f'#{tc+1} {mx}')
+
+## 13618 삼성시의 버스 노선 ##
+t = int(input())
+for tc in range(t):
+    n = int(input())
+    cnt = [0] * 5001 #0~5000
+    for _ in range(n):
+        a, b = map(int, input().split())
+        for i in range(a, b+1):
+            cnt[i] += 1
+    print(cnt)
+
+    p = int(input())
+    lst = [int(input()) for _ in range(p)]
+    ans = []
+    for i in lst:
+        print(cnt[i], end=' ')
