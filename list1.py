@@ -282,3 +282,14 @@ for tc in range(t):
     ans = []
     for i in lst:
         print(cnt[i], end=' ')
+        
+## 13617 현주의 상자 바꾸기 ##
+t = int(input())
+for tc in range(t):
+    n, q = map(int, input().split())
+    cnt = [0]*n
+    for i in range(1,q+1):
+        l, r = map(int, input().split())
+        for j in range(l-1,r):
+            cnt[j] = i
+    print(f'#{tc+1}',*cnt)
