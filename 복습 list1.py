@@ -293,3 +293,56 @@ for tc in range(t):
         for j in range(l-1,r):
             cnt[j] = i
     print(f'#{tc+1}',*cnt)
+
+## 13616 간단한 소인수분해 ##
+t = int(input())
+for tc in range(t):
+    n = int(input())
+    dct = {2:0,3:0, 5:0, 7:0, 11:0 }
+    while n > 1:
+        for key in dct:
+            if n % key == 0:
+                dct[key] += 1
+                n = n / key
+    ans = []
+    for key in dct:
+        ans.append(dct[key])
+    print(f'#{tc+1}', *ans)
+
+## 9386 연속한 1의 개수 ##
+t = int(input())
+for tc in range(t):
+    n = int(input())
+    lst = list(map(int, input()))
+
+    mx = 0
+    for i in range(n-1):
+        if lst[i] == 1:
+            cnt = 1
+            for j in range(i+1,n):
+                if lst[j] == 1:
+                    cnt += 1
+                else:
+                    break
+    if mx < cnt :
+        mx = cnt
+    print(f'#{tc+1} {mx}')
+    
+## 9367 점점 커지는 당근의 개수 ##
+
+t = int(input())
+for tc in range(t):
+    n = int(input())
+    lst = list(map(int, input().split()))
+
+    mx = 0
+    for i in range(n-1):
+        cnt = 1
+        for j in range(i+1, n):
+            if lst[i] < lst[j]:
+                cnt += 1
+            else:
+                break
+        if mx < cnt:
+            mx = cnt
+    print(f'#{tc+1} {mx}')
