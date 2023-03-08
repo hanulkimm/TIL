@@ -28,6 +28,7 @@
 - 줄 바꿈이 일어나는 요소
 - 화면 크기 전체 가로 폭을 차지
   - 너비 설정하면 설정 안 한 만큼은 margin으로 자동 부여
+- text-align: center/ left/ right 통해 수평 정렬
 - 블록 요소 안에 인라인 요소가 들어갈 수 있음
 - 대표적인 블록 레벨 요소: div / ul,ol,il / p / hr / form
 ### display: inline
@@ -35,7 +36,7 @@
 - content를 마크업하고 있는 만큼만 가로 폭 차지
 - width, height, margin-top, margin-bottom 지정할 수 없음
 - 상하여백은 line-height로 지정
-- text-align: center/ left/ right 통해 수평 정렬
+
 - 대표적인 인라인 레벨 요소: span/ a/ img/ input, label
 ### display: inline-block
 - block과 inline 요소의 특징을 모두 가짐
