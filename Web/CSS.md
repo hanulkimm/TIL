@@ -63,3 +63,13 @@
 ### Sticky 
 - 스크롤에 따라 static에서 fixed로 변경
 
+## CSS 원칙
+1. Normal Flow
+- 모든 요소는 네모(박스 모델), 좌측 상단에 배치
+- display에 따라 크기와 배치가 달라짐
+
+2. Position
+- position으로 위치의 기준을 변경
+  - relative: 본인의 원래 위치
+  - absolute: 특정 부모의 위치
+  - fixed: 화면의 위치
