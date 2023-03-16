@@ -43,6 +43,7 @@ urlpatterns = [
 - URL 설정에 정의된 특정한 경로들의 의존성을 제거할 수 있음
 ```python 
 # articles/urls.py
+app_name = 'articles'
 urlpatterns = [
   path('index/', views.index, name='index')
   path('greeting/', views.index, name='greeting')
