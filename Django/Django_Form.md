@@ -56,3 +56,37 @@
 
   </form>
 ```
+
+```python
+# urls.py
+from django.urls import path
+from . import views
+app_name = 'articles'
+urlpatterns = [
+    path('index/', views.index),
+    path('throw/', views.throw),
+    path('catch/', views.catch, name='catch'),
+]
+# views.py
+def throw(request):
+    return render(request, 'articles/throw.html')
+
+def catch(request):
+    nickname = request.GET.get('nickname')
+    context = {
+        'nickname' : nickname
+    }
+    
+    return render(request, 'articles/catch.html', context)
+```
+```html
+  # throw.html
+  <form action="{% url 'articles:catch' %}" method="GET">
+    <label for="nickname">nickname: </label>
+    <input type="text" name="nickname" id="nickname">
+    <input type="submit">
+
+  # catch.html
+  <p>{{nickname}}받음</p>
+  
+```
