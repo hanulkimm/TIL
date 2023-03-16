@@ -18,6 +18,7 @@
 $ pip install django==3.2.18 # django 설치
 $ django-admin startproject firstpjt # 프로젝트 생성
 $ python manage.py runserver # 서버 실행
+$ python manage.py startapp articles # 앱 만들기
 ```
 
 ## 가상환경
