@@ -46,3 +46,13 @@
 # Retrieving the Data (Server)
 - 데이터 가져오기
 - 데이터는 URL에 포함되어 서버로 보내짐
+
+# 예시
+```html
+  <form action="https://www.google.com/search" method="GET">
+    <label for="nickname">nickname: </label>
+    <input type="text" name="query" id="nickname">
+    <input type="submit">
+
+  </form>
+```
