@@ -1,12 +1,16 @@
 # CSS
 
 ## Box Model
+![image](https://user-images.githubusercontent.com/122726684/226162334-97040806-62e3-4a22-86c7-304aacea515f.png)
+
 - 모든 HTML 요소는 박스로 이루어짐
 - 하나의 박스는 네 부분(영역)으로 이루어짐
   - Content: 글이나 이미지 등 요소의 실제 내용
   - Padding: 테두리 안쪽의 내부 여백, 요소에 적용된 배경색, 이미지까지 적용
   - Border: 테두리 영역
-  - Margin: 테두리 바깥의 외부 여백, 배경색을 지정할 수 없다
+  - Margin: 테두리 바깥의 외부 여백, 배경색을 지정할 수 없다  
+
+![image](https://user-images.githubusercontent.com/122726684/226162399-6bd70679-1480-418e-a4ef-eeefc97fd0f5.png)
 ```css
 .margin{
   margin: 10px; # 상하좌우
@@ -14,7 +18,8 @@
   margin: 10px 20px 30px; # 상/좌우/하
 }
 .border{
-  border: 2px dashed black; # width, style, color
+  /* width, style, color */
+  border: 2px dashed black; 
 }
 ```
 ### Box-sizing
@@ -22,6 +27,7 @@
   - padding 제외한 순수 content영역만을 box로 지정
 - border까지의 너비를 100px으로 보기 위해서 box-sizing을 border-box로 지정
 
+![image](https://user-images.githubusercontent.com/122726684/226162583-ddae36de-4b3a-4595-914a-1544ad7a71e0.png)
 
 ## CSS Display
 ### display: block
@@ -36,10 +42,13 @@
 - content를 마크업하고 있는 만큼만 가로 폭 차지
 - width, height, margin-top, margin-bottom 지정할 수 없음
 - 상하여백은 line-height로 지정
-
 - 대표적인 인라인 레벨 요소: span/ a/ img/ input, label
+
+![image](https://user-images.githubusercontent.com/122726684/226162956-62a3d57c-1510-4911-9377-1ea0ed9cc157.png)
+
 ### display: inline-block
 - block과 inline 요소의 특징을 모두 가짐
+- inline처럼 한 줄에 표시 가능하고, block처럼 width, height, margin 속성을 모두 지정할 수 있음
 ### display: none
 - 해당 요소를 화면에 표시하지 않고 공간조차 부여하지 않음
 - visibility: hidden은 해당 요소가 공간을 차지하나 화면에 표시만 하지 않는다.
@@ -62,7 +71,7 @@
 - normal flow에서 벗어남(레이아웃에 공간 차지하지 않음)
 - 부모 요소와 관계없이 viewport를 기준으로 이동(스크롤시에도)
 ### Sticky 
-- 스크롤에 따라 static에서 fixed로 변경
+- 속성을 적용한 박스는 평소에 문서 안에서 postition: static 상태와 같이 일반적인 흐름에 따르지만, 스크롤 위치가 임계점에 이르면 position: fixed와 같이 박스를 화면에 고정할 수 있음
 
 ## CSS 원칙
 1. Normal Flow
