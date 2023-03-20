@@ -26,6 +26,9 @@
 ### HTML <input> 속성 : name
 - name: form를 통해 데이터를 제출(submit)했을 때 name 속성에 설정된 값을 서버로 전송하고, 서버는 name 속성에 설정된 값을 통해 사용자가 입력한 데이터 값에 접근할 수 있음
 - 서버에 전달하는 파라미터로 매핑하는 것
+- 예시
+  ![image](https://user-images.githubusercontent.com/122726684/226237595-82a49fe6-257c-4bf0-8ff3-dc4b83576adb.png)
+
 
 ### HTTP request methods
 - HTTP란? HTML 문서와 같은 리소스들을 가져올 수 있도록 해주는 프로토콜
@@ -35,7 +38,7 @@
 
 ### HTTP request methods : GET
 - 서버로부터 정보를 조회하는 데 사용
-- 데이터를 가져올 때만 사용해야 함
+- 데이터를 가져올 때만 사용해야 함S
 - 데이터를 서버에 전송할 때 query string parameters를 통해 전송
   - 데이터는 URL에 포함되어 서버로 보내짐
 ### Query String Parameters
