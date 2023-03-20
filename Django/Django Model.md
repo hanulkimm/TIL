@@ -47,6 +47,7 @@ class Arcticle(models.Model):
 ## ORM
 - Object-Relational-Mapping
 - SQL을 사용하지 않고 데이터베이스를 조작할 수 있게 만들어주는 매개체
+
 ![image](https://user-images.githubusercontent.com/122726684/225653650-ff4debe1-311c-4e82-9b7d-86eca6b8049b.png)
 
 
@@ -67,14 +68,56 @@ INSTALLED_APPS = [
 $ pip freeze > requirements.txt
 ```
 
-### Django shell
+## Django shell
 - ORM 관련 구문 연습을 위해 파이썬 쉘 환경 사용
 ` python manage.py shell_plus `
 
 ## QuerySet API
-
 ### Database API
-- Django가 제공하는 ORM을 사용해 데이터베이스를 조작하느 방법
+- Django가 제공하는 ORM을 사용해 데이터베이스를 조작하는 방법
 - Model을 정의하면 데이터를 만들고 읽고 수정하고 지울 수 있는 API를 제공
 - API 구문
+
+
 ![image](https://user-images.githubusercontent.com/122726684/225658566-d3d7ae12-73d9-4a52-b863-30191d420721.png)
+- objects manager
+  - django는 기본적으로 모든 django 모델 클래스에 대해 objects라는 manager 객체를 자동으로 추가
+  - 이를 통해 특정 데이터 조작 가능
+  - DB를 python class로 조작할 수 있도록 여러 메서드를 제공하는 manager
+- Query
+  - 데이터베이스에 특정한 데디터를 보여달라는 ㅇ청
+  - 파이썬으로 작성한 코드가 ORM에 의해 SQL로 변환되어 데이터베이스에 전달되며, 데이터베이스의 응답 데이터를 ORM이 QuerySet이라는 자료 형태로 변환하여 우리에게 전달
+- QuerySet 
+  - 데이터베이스에게서 전달 받는 객체 목록(데이터 목록)
+  - django orm을 통해 만들어진 자료형이며 필터를 걸거나 정렬 등을 수행할 수 있음
+  - objects manager를 사용하여 복수의 데이터를 가져오는 queryset method를 사용할 때 반환되는 객체
+  - 단, 데이터베이스가 단일한 객체를 반환 할 때는 QuerySet이 아닌 모델의 인스턴스로 반환됨
+
+## CRUD
+- Create/ Read/ Update/ Delete
+- 대부분의 컴퓨터 소프트웨어가 가지는 기본적인 데이터 처리 기능 4가지를 묶어서 일컫는 말
+### Create: 데이터 객체를 만드는(생성하는) 3가지 방법
+1. 첫번째 방법  
+ - article = Article()
+ - article.title
+ - article.save()
+  
+![image](https://user-images.githubusercontent.com/122726684/226249927-331227c8-491e-4d70-bc3e-e6984a7b8a93.png)
+![image](https://user-images.githubusercontent.com/122726684/226250020-cbc64fdc-a553-4b73-b998-2e341cba70a2.png)
+![image](https://user-images.githubusercontent.com/122726684/226250084-56b6cb9c-bc55-4853-82fb-69ab76296747.png)
+
+2. 두번째 방법 
+- 인스턴스 생성 시 초기 값과 함께 작성하여 생성
+
+![image](https://user-images.githubusercontent.com/122726684/226250240-daae7b2c-2d9d-47b6-bea5-80352cdac2a0.png)
+3. 세 번째 방법
+- QuerySet API 중 create() 메서드 활용
+```
+Article.objects.create(title='third', content='django')    
+<Article: Article object (3)>
+```
+- .save()
+  - 객체를 데이터베이스에 저장함
+  - 데이터 생성 시 save를 호출하기 전에는 객체의 id 값은 None
+  - id 값은 django가 아니라 db에 계산되기 때문
+  - 단순히 모델 클래스를 통해 인스턴스를 생성하는 것은 db에 영향을 미치지 않기 때문에 반드시 save를 호출해야 테이블에 레코드가 생성됨
