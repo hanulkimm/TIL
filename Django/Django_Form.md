@@ -18,12 +18,12 @@
 - HTML form 데이터는 오직 2가지 방식으로 전송
   - GET 방식과 POST 방식
 
-### HTML <input> 요소
+### HTML `<input>` 요소
 - 사용자로부터 데이터 입력 받기 위해 사용
 - 'type'속성에 따라 동작 방식이 달라짐 (기본값은 text)
 - 핵심 속성 : name
 
-### HTML <input> 속성 : name
+### HTML `<input>` 속성 : name
 - name: form를 통해 데이터를 제출(submit)했을 때 name 속성에 설정된 값을 서버로 전송하고, 서버는 name 속성에 설정된 값을 통해 사용자가 입력한 데이터 값에 접근할 수 있음
 - 서버에 전달하는 파라미터로 매핑하는 것
 - 예시
