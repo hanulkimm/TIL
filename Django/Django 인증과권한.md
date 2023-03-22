@@ -158,6 +158,7 @@ def login(request):
 ### User
 
 - 템플릿에서 인증 관련 데이터를 출력하는 방법
+
 ![image](https://user-images.githubusercontent.com/122726684/226792946-787bdd14-1e6b-4042-994c-b391c3f03cc8.png)
 ![image](https://user-images.githubusercontent.com/122726684/226793227-30209cf1-f79a-4703-9638-231e08adabbf.png)
 
