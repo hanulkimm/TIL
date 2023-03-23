@@ -25,6 +25,12 @@
 - 한 줄: `{# #}` 
 - 여러 줄: `{% comment %} {% endcomment %}`
 
+![image](https://user-images.githubusercontent.com/122726684/227138885-a2cb7bc9-dbe6-4c81-a54f-de519ef9c025.png)
+![image](https://user-images.githubusercontent.com/122726684/227139057-33c778af-212e-469e-8665-bd1f362eec13.png)
+![image](https://user-images.githubusercontent.com/122726684/227139160-788e6763-8004-4070-a67d-e7c3d48a0498.png)
+![image](https://user-images.githubusercontent.com/122726684/227139218-e6253334-52f4-46f8-b89a-c0eed87164d3.png)
+
+
 ## Template inheritance
 - 템플릿 상속은 코드의 재사용성에 초점을 맞춤
 - 템플릿 상속을 사용하면 사이트의 모든 공통 요소를 포함하고 하위 템플릿이 재정의 할 수 있는 블록을 정의하는 기본 'skeletion' 템플릿을 만들 수 있음
@@ -40,6 +46,9 @@
 ### Base.html
 - 모든 앱에서 상속 받기 위해서 base.html을 프로젝트 상단에 두기! 
 - settings의 Templates에사 `DIRS : [BASE_DIR / 'templates']` 작성
+
+![image](https://user-images.githubusercontent.com/122726684/227139625-b698ebd7-2cc4-451f-983c-d90f082f3c30.png)
+
 ### 사용 순서
 1. pjt 폴더에 template 폴더를 만들고 base.html 파일 생성  
 2. base 파일에 skeleton 템플릿 작성, '<body>' 안에 {% block content %}{% endblock content %}` 사용
