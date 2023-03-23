@@ -141,3 +141,21 @@ Article.objects.create(title='third', content='django')
   
 ![image](https://user-images.githubusercontent.com/122726684/227151298-b93784e7-9149-480b-8831-581af5041c6f.png)
 
+### Field lookups
+- 특정 레코드에 대한 조건을 설정하는 방법
+- QuerySet 메서드 filter(), exclude(), get()에 대한 키워드 인자로 지정됨
+
+![image](https://user-images.githubusercontent.com/122726684/227209385-4c22c01b-4c9e-4dac-8fc0-51c7b6a7170c.png)
+
+## UPDATE
+1. 수정하고자 하는 article 인스턴스 객체를 조회 후 반환 값을 저장
+2. article 인스턴스 객체의 인스턴스 변수 값을 새로운 값으로 할당
+3. save() 인스턴스 메서드 호출
+
+![image](https://user-images.githubusercontent.com/122726684/227210364-d1b216e5-2bca-44c0-8980-ca5810053600.png)
+
+## DELETE
+1. 삭제하고자 하는 artice 인스턴스 객체를 조회 후 반환 값을 저장
+2. delete() 인스턴스 메서드 호출
+
+![image](https://user-images.githubusercontent.com/122726684/227210572-5a2e355d-c7fe-4710-b140-7224d9072093.png)
