@@ -53,6 +53,7 @@ def index(request):
 ```
 ### Article Model 작성
 ```python
+# articles/models.py
 from django.db import models
 
 class Article(models.Model):
