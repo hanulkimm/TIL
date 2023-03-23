@@ -85,7 +85,7 @@ $ pip freeze > requirements.txt
   - 이를 통해 특정 데이터 조작 가능
   - DB를 python class로 조작할 수 있도록 여러 메서드를 제공하는 manager
 - Query
-  - 데이터베이스에 특정한 데디터를 보여달라는 ㅇ청
+  - 데이터베이스에 특정한 데디터를 보여달라는 요청
   - 파이썬으로 작성한 코드가 ORM에 의해 SQL로 변환되어 데이터베이스에 전달되며, 데이터베이스의 응답 데이터를 ORM이 QuerySet이라는 자료 형태로 변환하여 우리에게 전달
 - QuerySet 
   - 데이터베이스에게서 전달 받는 객체 목록(데이터 목록)
@@ -93,10 +93,10 @@ $ pip freeze > requirements.txt
   - objects manager를 사용하여 복수의 데이터를 가져오는 queryset method를 사용할 때 반환되는 객체
   - 단, 데이터베이스가 단일한 객체를 반환 할 때는 QuerySet이 아닌 모델의 인스턴스로 반환됨
 
-## CRUD
+# CRUD
 - Create/ Read/ Update/ Delete
 - 대부분의 컴퓨터 소프트웨어가 가지는 기본적인 데이터 처리 기능 4가지를 묶어서 일컫는 말
-### Create: 데이터 객체를 만드는(생성하는) 3가지 방법
+## Create: 데이터 객체를 만드는(생성하는) 3가지 방법
 1. 첫번째 방법  
  - article = Article()
  - article.title
@@ -121,3 +121,23 @@ Article.objects.create(title='third', content='django')
   - 데이터 생성 시 save를 호출하기 전에는 객체의 id 값은 None
   - id 값은 django가 아니라 db에 계산되기 때문
   - 단순히 모델 클래스를 통해 인스턴스를 생성하는 것은 db에 영향을 미치지 않기 때문에 반드시 save를 호출해야 테이블에 레코드가 생성됨
+
+## READ
+### all()
+- QuerySet return
+- 전체 데이터 조회
+
+![image](https://user-images.githubusercontent.com/122726684/227150744-500cead7-3dd6-4b1e-bf49-8ad95da84a6b.png)
+### get()
+- 단일 데이터 조회
+- 객체를 찾을 수 없다면 DoesNotExist 예외를 발생시키고, 둘 이상의 객체를 찾으면 MultipleObjectsReturned 예외를 발생시킴
+- 위의 특성 때문에 primary key와 같이 고유성(uniqueness)을 보장하는 조회에서 사용해야 함
+
+![image](https://user-images.githubusercontent.com/122726684/227151084-865c99e0-e347-4f67-bc02-97d3457f171a.png)
+
+### filter()
+- 지정된 조회 매개 변수와 일치하는 객체를 포함하는 새 QuerySet을 반환
+- 조회된 객체가 없거나 1개여도 QuerySet을 반환
+  
+![image](https://user-images.githubusercontent.com/122726684/227151298-b93784e7-9149-480b-8831-581af5041c6f.png)
+
