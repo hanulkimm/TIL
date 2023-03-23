@@ -61,6 +61,9 @@ class Article(models.Model):
   content = models.TextField()
   created_at = models.DateTimeField(auto_now_add = True)
   updated_at = models.DateTimeField(auto_now=True)
+
+  def __str__(self):
+    return f'{self.pk}번째글-{self.title}'
 ```
 
 ## Read 1 (index page)
