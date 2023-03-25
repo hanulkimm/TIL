@@ -17,6 +17,17 @@ from .models import Article
 
 admin.site.register(Article)
 ```
+- admin 사이트에서 보일 필드 설정하기
+```python 
+# articles/admin.py
+from django.contrib import admin
+from .models import Article
+
+class PostAdmin(admin.ModelAdmin):
+  list_display=['pk','title','genre']
+admin.site.register(Article,PostAdmin)
+```
+
 
 # CRUD with view functions
 ## 사전 준비

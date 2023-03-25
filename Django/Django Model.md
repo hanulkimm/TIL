@@ -128,6 +128,10 @@ Article.objects.create(title='third', content='django')
 - 전체 데이터 조회
 
 ![image](https://user-images.githubusercontent.com/122726684/227150744-500cead7-3dd6-4b1e-bf49-8ad95da84a6b.png)
+
+- 데이터 오름차순 조회
+`Article.objects.all().order_by(-pk)`
+
 ### get()
 - 단일 데이터 조회
 - 객체를 찾을 수 없다면 DoesNotExist 예외를 발생시키고, 둘 이상의 객체를 찾으면 MultipleObjectsReturned 예외를 발생시킴
@@ -141,11 +145,15 @@ Article.objects.create(title='third', content='django')
   
 ![image](https://user-images.githubusercontent.com/122726684/227151298-b93784e7-9149-480b-8831-581af5041c6f.png)
 
+
 ### Field lookups
 - 특정 레코드에 대한 조건을 설정하는 방법
 - QuerySet 메서드 filter(), exclude(), get()에 대한 키워드 인자로 지정됨
 
 ![image](https://user-images.githubusercontent.com/122726684/227209385-4c22c01b-4c9e-4dac-8fc0-51c7b6a7170c.png)
+
+- 예를 들어, title이 e로 끝나는 것 만 조회
+`Movie.objects.filter(title__endswith='e')`
 
 ## UPDATE
 1. 수정하고자 하는 article 인스턴스 객체를 조회 후 반환 값을 저장
