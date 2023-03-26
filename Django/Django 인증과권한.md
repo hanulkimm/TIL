@@ -40,7 +40,7 @@ AUTH_USER_MODEL = 'accounts.User'
 - 기본 User 모델이 아니기 때문에 등록하지 않으면 admin site에 출력되지 않음
 ```python
 from django.contrib import admin
-from django.contrib.auth.adim import UserAdmin
+from django.contrib.auth.admin import UserAdmin
 from .models import User
 
 admin.site.register(User, UserAdmin)
