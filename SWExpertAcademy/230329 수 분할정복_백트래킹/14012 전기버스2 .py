@@ -1,3 +1,26 @@
+# 백트래킹
+def dfs(i, cnt, sm):
+    global ans
+    if i==n:
+        ans = min(ans, cnt)
+        return
+
+    # 교체 안 하는 경우
+    if sm>0: # 배터리 잔량 있을 때만 가능
+        dfs(i+1, cnt, sm-1)
+    # 교체하기 ( 모든 정류장 마다 배터리 잔량이 0보다 큼)
+    dfs(i+1, cnt+1, lst[i]-1)
+
+t = int(input())
+for tc in range(1, t + 1):
+    lst = list(map(int, input().split()))
+    n = lst[0]
+    ans = n
+    dfs(2,0,lst[1]-1) # idx, cnt, sm
+    print(ans)
+
+
+# DP
 t = int(input())
 for tc in range(1, t + 1):
     n, *charge = list(map(int, input().split()))

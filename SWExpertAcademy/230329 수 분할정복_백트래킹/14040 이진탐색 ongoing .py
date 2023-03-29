@@ -1,5 +1,3 @@
-## 시간초과!!!
-
 t = int(input())
 for tc in range(1, t+1):
     n, m = map(int, input().split())
@@ -7,7 +5,7 @@ for tc in range(1, t+1):
     m_lst = list(map(int, input().split()))
     ans = 0
     for ch in m_lst:
-        if ch in n_lst: # 우선 n_lst에 존재
+        if ch in n_lst: # 우선 n_lst에 존재(이게 시간 초과)
             M = ch # 찾는 값
             s, e = 0, n-1
             stk = []
