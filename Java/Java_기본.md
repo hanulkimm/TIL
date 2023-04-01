@@ -146,7 +146,7 @@
 - +=, -= , *=, /=
 
 
-# 제어문(조건문)
+# 조건문
 ## IF - ELSE 문
 - 조건식의 결과에 따라 블록 실행 여부가 결정
 - 조건식: true/false 값을 산출할 수 있는 연산식 또는 boolean 타입 변수가 올 수 있음
@@ -178,5 +178,92 @@ switch(수식){
 }
 ```
 
-# 제어문 반복문
+# 반복문
 ## For 문
+```
+for(초기화식;조건식;증감식;){
+  반복 수행할 문장;
+}
+```
+- 초기화는 반복문 시작될 때 한 번 실행
+- 조건식이 False이면 반복문 종료
+- 증감식은 반복문이 끝나면 실행
+- 초기화식, 증감식은 ','을 이용하여 둘 이상 작성 가능
+- 필요하지 않은 부분은 생략 가능
+  - for(;;) 무한루프
+- 반복횟수 알고 있을 때 유용
+
+### 중첩 for 문
+```
+for (초기화식;조건식;증감식){
+  for(초기화식;조건식;증감식){
+    반복수행할 문장;
+  }
+}
+```
+- 예시
+```java
+outer: for (int i=0; i<3; i++){
+  for (int j=0; j<3; j++){
+    if (i==1) continue outer;
+    System.out.println(i+","+j);
+  }
+}
+```
+
+## While 문
+```
+while(조건식){
+  반복수행할 문장;
+}
+```
+- 조건식이 true일 경우 반복
+- 조건식 생략 불가능
+
+### do while 문
+```
+do {
+  반복수행할 문장;
+} while (조건식);
+```
+- 블록 내용을 먼저 수행 후 조건식 판단
+  - 최소 한번은 수행
+- 조건식이 true일 경우 반복
+- 조건식 생략 불가능
+
+- 예시
+```java
+// While
+import java.util.Scanner;
+
+public class testwhile {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		while (num == 1) {
+			System.out.println("블록을 실행합니다.");
+			num = sc.nextInt();
+		}
+	}
+}
+// Do While
+public class test_dowhile {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		do {
+			System.out.println("블록을 실행합니다.");
+			num = sc.nextInt();
+		} while (num == 1);
+	}
+
+}
+
+```
+
+## break
+- switch, while, do-while, for 문 블록에서 빠져나오기 위해 사용
+- 반복문에 이름(라벨)을 붙여 한번에 빠져 나올 수 있음
+## continue
+- 반복문의 특정 지점에서 제어를 반복문의 처음으로 보냄
+- 반복문에 이름(라벨)을 붙여 제어할 수 있음
