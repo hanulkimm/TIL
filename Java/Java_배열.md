@@ -53,3 +53,15 @@ int[] scores = {1,2,3,4,5}
 System.out.println(Arrays.toString(scores)); 
 // [1, 2, 3, 4, 5]
 ```
+
+## 배열의 복사
+- 새로운 배열 = Arrays.copyOf(복사하고싶은배열, 새로운 배열 크기)
+- 예시:
+```java
+int[] scores = new int[] { 1,2,3,4,5};
+int[] scores2 = Arrays.copyOf(scores, scores.length*2);
+System.out.println(Arrays.toString(scores2));
+// [1, 2, 3, 4, 5, 0, 0, 0, 0, 0]
+```
+
+
