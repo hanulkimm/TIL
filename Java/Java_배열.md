@@ -64,4 +64,39 @@ System.out.println(Arrays.toString(scores2));
 // [1, 2, 3, 4, 5, 0, 0, 0, 0, 0]
 ```
 
+# 다차원 배열
+## 정의
+- 2차원 이상의 배열
+- 배열 요소로 또 다른 배열을 가지는 배열
+## 2차원 배열
+### 선언
+- `int[][] iArr`
+### 생성
+- 배열의 이름 = new 배열유형[1차원배열개수][1차원배열의 크기];
+- 배열의 이름 = new 배열유형[1차원 배열개수][];
+- 예시:
+  - `int[][] scores = {{1,2,3,4},{5,6,7,8},{9,10,11,12}};`
+  - `int[][] scores = new int[3][4]`
+
+### 실습: 2차원 배열의 원소 중 3의배수의 개수와 합 출력하기
+```java
+public static void main(String[] args) {
+		int [][] grid = {
+				{2,3,1,4,7},{8,13,3,33,1},{7,4,5,80,12},
+				{17,9,11,5,4},{4,5,91,27,7}
+		};
+		
+		int count = 0;
+		int sum = 0;
+		for (int[] row :grid) {
+			for (int num:row) {
+				if (num%3==0) {
+					count ++;
+					sum += num;
+				}
+			}
+		}
+		System.out.printf("개수 : %d, 총합 : %d%n", count, sum);
+	}
+```
 
