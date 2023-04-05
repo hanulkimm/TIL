@@ -42,7 +42,7 @@
 - SQL키워드는 대소문자 구분하지 않음
   - 그러나 대문자 작성 권장
 
-## DDL
+# DDL
 - SQL 데이터 정의 언어를 사용하여 테이블 데이터베이스 개체를 만드는 방법을 학습
 - DDL은 테이블 구조를 관리
   - CREATE, ALTER, DROP
@@ -147,4 +147,57 @@ CREATE TABLE contacts (
 - 한 번에 하나의 테이블만 삭제 가능
 - 여러 테이블을 제거하려면 여러 DROP TABLE문을 실행해야 함
 - 실행 취소하거나 복구할 수 없음
+
+
+# DML
+- DML을 통해 데이터 조작하기
+
+## CSV 파일 IMPORT 해오기
+1. DML.sql 파일 생성
+2. 테이블 생성하기!
+3. 데이터베이스 파일 열기  
+`winpty sqlite3`
+4. 모드를 csv로 설정  
+`.mode csv`
+5. import 명령어 사용하여 csv 데이터 가져오기  
+`.import users.csv users`
+
+## Query
+1. SELECT
+- `SELECT column1, column2 FROM table_name;`
+- 특정 테이블에서 데이터 조회하기 위해 사용
+- 예시: `SELECT * FROM users;`
 - 
+2.  SELECT DISTINCT
+- `SELECT DISTINCT select_list FROM table_name;`
+- 조회 결과에서 중복된 행 제거
+- DISTINCT는 SELECT에서 선택적으로 사용할 수 있는 절
+- NULL: NULL 값도 중복으로 간주
+
+3. ORDER BY
+- `SELECT select_list FROM table_name ORDER BY column_1 ASC, column_2 DESC;`
+- 하나 이상의 컬럼을 정렬하는 경우, 첫번째 컬럼으로 정렬 한 후 그 이후 컬럼을 사용하여 정렬
+- NULL의 정렬: SQlite에서 NULL은 다른 값보다 작은 것으로 간주
+
+4. WHERE
+![image](https://user-images.githubusercontent.com/122726684/230001120-819aea70-d370-4b6a-9df6-39af61c68593.png)
+
+- LIKE 연산자: 
+  1. %(percent): 0개 이상의 문자가 올 수 있음을 의미
+  2. _(underscore): 단일(1개)문자가 있음을 의미
+![image](https://user-images.githubusercontent.com/122726684/230001376-b6efc106-75c2-4740-beee-e52ccd107008.png)
+
+- IN 연산자
+  - 값이 값 목록 결과에 있는 값도 일치하는지 확인
+  - IN 연산자의 결과를 부정하려면 NOT IN 연산자 사용
+
+- BETWEEN 연산자
+  - `BETWEEN a AND b`
+
+
+5. LIMIT
+- `SELECT column_list FROM table_name LIMIT row_count;`
+- OFFSET keyword
+  - OFFSET을 LIMIT과 함께 사용하면 지정된 위치에서부터 데이터를 조회할 수 있음
+- 예시: 11번째부터 20번째 데이터의 rowid와 이름 조회하기
+  - `SELECT rowid, first_name FROM users LIMIT 10 OFFSET 10;`
