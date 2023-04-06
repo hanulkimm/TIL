@@ -57,3 +57,63 @@ WHERE search_condition;
 - 한 행, 여러 행, 모든 행 삭제 가능
 - WHERE 절 생략하면 모든 행 삭제 
 - ORDER BY, LIMIT 절 사용하여 삭제할 행 수를 지정할 수 있음
+
+# 정규형
+## 개념
+- 데이터베이스를 구조화하는 방법론
+- 데이터의 중복을 최소화하고 일관성과 무결성을 보장하기 위함
+- 데이터를 더 좋은 구조로 바꾸는 것을 정규화라고 함
+- 관계형 데이터베이스의 경우 6개의 정규형이 있음
+  
+### 제 1 정규형
+- 하나의 속성값이 복수형을 가지면 안됨
+- 하나의 속성에는 값이 하나만 들어가야 함
+- 아래 그림은 제 1정규형 위반
+![image](https://user-images.githubusercontent.com/122726684/230248499-a91dbc58-6f1c-4725-8223-6ca0e4b6a95d.png)
+
+
+### 제 2 정규형
+- 테이블의 테마와 관련 없는 컬럼은 다른 테이블로 분리하는 것
+- 부분 함수적 종속성(Partial Functional Dependency) 을 제거한 것
+  - 키가 아닌 속성이 기본키의 일부분에 종속되는 것
+
+![image](https://user-images.githubusercontent.com/122726684/230248785-b7d27570-8d55-4744-bf3b-fb70decf6186.png)
+
+![image](https://user-images.githubusercontent.com/122726684/230248608-9d412cf2-d0c4-4505-a82c-6254c97c82b0.png)
+
+### 제 3 정규형
+- 다른 속성에 의존(종속)하는 속성은 따로 분리할 것
+
+# JOIN
+
+## 개념
+- 두 개 이상의 테이블에서 데이터를 가져와 결합하는 것
+- 조회를 하기 위해 테이블 연결하여 1개로 만들어야 함
+- 종류: CROSS JOIN, INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL OUTER JOIN
+
+## 테이블 합치기
+![image](https://user-images.githubusercontent.com/122726684/230251485-e36e5527-9a15-498a-83be-3ae574190113.png)
+
+### CROSS JOIN
+- ` SELECT * FROM articles, users;`
+   ![image](https://user-images.githubusercontent.com/122726684/230251619-9a6e459d-136d-4e06-b064-116131f31779.png)
+
+- `SELECT * FROM articles.userID=users.rowID;`
+- `SELECT * FROM userID=users.rowID;`
+
+### INNER JOIN
+```sql
+SELECT * FROM articles INNER JOIN users ON userID=users.rowID;
+```
+![image](https://user-images.githubusercontent.com/122726684/230252301-60d334aa-8559-47e5-b3af-69beef62f5ae.png)
+
+### LEFT(OUTER) JOIN
+```sql
+SELECT * FROM articles LEFT JOIN users ON userID=users.rowID;
+```
+![image](https://user-images.githubusercontent.com/122726684/230252415-d64251a4-5292-4897-9c06-4cfdcefb163f.png)
+### RIGHT(OUTER) JOIN
+```sql
+SELECT * FROM articles RIGHT JOIN users ON userID=users.rowID;
+```
+![image](https://user-images.githubusercontent.com/122726684/230252490-c0054936-ee4e-486a-b9a3-d6e711470e72.png)
