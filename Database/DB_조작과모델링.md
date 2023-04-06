@@ -31,7 +31,7 @@ SELECT column_1, aggregate_function(column_2) FROM table_name GROUP BY column_1,
 ## Changing Data
 ### Insert
 ```sql
-SELECT INTO table_name (column_1, column_2, ...) VALUES (values1, values2, ...)
+INSERT INTO table_name (column_1, column_2, ...) VALUES (values1, values2, ...)
 ```
 - 새 행을 테이블에 삽입
 - 만약 모든 컬럼에 대한 값 지정해주면 컬럼 목록은 선택 사항
@@ -68,7 +68,7 @@ WHERE search_condition;
 ### 제 1 정규형
 - 하나의 속성값이 복수형을 가지면 안됨
 - 하나의 속성에는 값이 하나만 들어가야 함
-- 아래 그림은 제 1정규형 위반
+- 아래 그림은 제 1정규형 위반  
 ![image](https://user-images.githubusercontent.com/122726684/230248499-a91dbc58-6f1c-4725-8223-6ca0e4b6a95d.png)
 
 
@@ -91,11 +91,11 @@ WHERE search_condition;
 - 조회를 하기 위해 테이블 연결하여 1개로 만들어야 함
 - 종류: CROSS JOIN, INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL OUTER JOIN
 
-## 테이블 합치기
+## 테이블 합치기  
 ![image](https://user-images.githubusercontent.com/122726684/230251485-e36e5527-9a15-498a-83be-3ae574190113.png)
 
 ### CROSS JOIN
-- ` SELECT * FROM articles, users;`
+- ` SELECT * FROM articles, users;`  
    ![image](https://user-images.githubusercontent.com/122726684/230251619-9a6e459d-136d-4e06-b064-116131f31779.png)
 
 - `SELECT * FROM articles.userID=users.rowID;`
