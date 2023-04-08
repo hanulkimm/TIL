@@ -178,3 +178,38 @@ public class PersonTest {
 		this.sleep();
   }
 ```
+
+## 접근 제한자
+
+### 패키지
+- 클래스 관리 위해 패키지 사용
+- 클래스와 관련 있는 인터페이스들을 모아두기 위한 이름 공간
+- 패키지의 구분은 .(dot)연산자 이용
+- 시중에 나와 있는 패키지들과 구분하게 지어야 함
+  - 일반적으로 소속이나 회사의 도메일 사용함
+  - 예시: `도메인.project_name.modele_name`
+
+### 임포트
+- 다른 패키지에 있는 클래스를 사용하기 위해서 import 과정이 필요
+- import 선언 시, import 키워드 뒤에 package 이름과 클래스 이름 모두 입력하거나 패키지의 모든 클래스를 포함할 때는 '*'를 사용하기도 함
+- `import package_name.class_name;`
+- `import package_name.*;`
+
+## 접근 제한자
+- 접근 허용 범위를 지정하는 역할의 키워드
+
+### 종류
+- public: 모든 위치에서 접근 가능
+- protected: 같은 패키지에서 접근 가능, 다른 패키지 접근 불가능, 다른 패키지와 상속 관계있을 경우 접근 가능
+- (default): 같은 패키지에서만 접근 허용
+- private: 자신 클래스에만 접근 허용
+
+- 그외: 
+  - static: 클래스 레벨의 요소 설정
+  - final: 요소를 더 이상 수정할 수 없게 함
+
+- 클래스(외부) 사용 가능: public, default
+- 내부 클래스, 멤버변수, 메서드 사용 가능: 4가지 모두 가능
+
+![image](https://user-images.githubusercontent.com/122726684/230717834-596087d9-1556-48df-805b-0b3fa88d0b81.png)
+
