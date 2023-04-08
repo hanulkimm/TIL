@@ -213,3 +213,49 @@ public class PersonTest {
 
 ![image](https://user-images.githubusercontent.com/122726684/230717834-596087d9-1556-48df-805b-0b3fa88d0b81.png)
 
+![image](https://user-images.githubusercontent.com/122726684/230719380-e0a18ee0-b976-44c7-918f-4313d9b123b3.png)
+
+### 접근자(getter)/ 설정자(setter)
+- 클래스에서 선언된 변수 중 접근제한에 의해 접근할 수 없는 변수의 경우, 다른 클래스에서 접근할 수 없기 때문에 접근하기 위한 메서드를 public으로 선언하여 사용
+
+![image](https://user-images.githubusercontent.com/122726684/230719927-b0b8555a-48a6-4454-bb35-e0c9126e86ed.png)
+
+```java
+// PersonTest.java
+public class PersonTest {
+	public static void main(String[] args) {
+		Person p1 = new Person();
+		p1.setName("김하늘"); //public method이니까 접근 가능
+		p1.setAge(24);
+		System.out.println(p1.getName());
+		System.out.println(p1.getAge());
+	}
+}
+```
+
+### 싱글턴 패턴(Singleton Pattern)
+- 생성자가 여러 차례 호출되더라도 실제로 생성되는 객체는 하나이고 최초 생성 이후에 호출된 생성자는 최초즤 생성자가 생성한 객체를 리턴
+```java
+// Person.java
+public class Person{
+  private static Person instance = new Person();
+  private Person(){
+    this.name = "김하늘";
+    this.age = 24;
+  }
+  public static Person getInstance() {
+    return instance;
+  }
+}
+
+// PersonTest.java
+public class PersonTest(){
+  public static void main(String[] args) {
+    Person p1 = getInstance();
+    System.out.println(p1.getName());
+    // 김하늘
+		System.out.println(p1.getAge());
+    // 24
+  }
+}
+```
