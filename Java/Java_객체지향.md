@@ -259,3 +259,38 @@ public class PersonTest(){
   }
 }
 ```
+## JVM 메모리 구조
+![image](https://user-images.githubusercontent.com/122726684/230754507-fdb9e287-cebb-4956-938d-4267eb8c3fd9.png)
+
+## static 특징
+1. 로딩 시점:
+- static: 클래스 로딩 시
+- non-static: 객체 생성 시
+2. 메모리상의 차이
+- static: 클래스당 하나의 메모리 공간만 할당
+- non-static: 인스턴스 당 메모리가 별도로 할당
+3. 문법적 특징
+- static: 클래스 이름으로 접근
+- non-static: 객체 생성 후 접근
+```java
+public class Person{
+  static int age;
+  String name;
+  int grade;
+}
+
+public class PersonTest {
+  public static void main(String[] args) {
+    // 클래스 이름으로 접근
+    Person.age;
+    // 객체 생성 후 접근
+    Person p1 = new Person();
+    p1.name="KIM"
+    
+  }
+}   
+```
+
+4. static 영역에서는 non-static 영역 직접 접근 불가능
+5. non-static 영역에서는 static 영역에 대한 접근이 가능
+
