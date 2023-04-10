@@ -77,13 +77,13 @@ class Comment(models.Model):
      
 ![image](https://user-images.githubusercontent.com/122726684/230813184-a4d726d9-b273-4313-bb20-1463d14957a5.png)
 
-![image](https://user-images.githubusercontent.com/122726684/230813225-0fb1f02c-dd2a-4402-8f81-8562edab65ff.png)
+![image](https://user-images.githubusercontent.com/122726684/230813225-0fb1f02c-dd2a-4402-8f81-8562edab65ff.png)  
 2. 댓글 속성 값 확인
-![image](https://user-images.githubusercontent.com/122726684/230813286-e7be5fda-ddd9-4852-9ded-b617280f0af2.png)
+![image](https://user-images.githubusercontent.com/122726684/230813286-e7be5fda-ddd9-4852-9ded-b617280f0af2.png)  
 3. comment 인스턴스를 통한 article 값 접근
-![image](https://user-images.githubusercontent.com/122726684/230813369-7b345c37-f9b0-4dd6-85bc-36875aa2e55f.png)
+![image](https://user-images.githubusercontent.com/122726684/230813369-7b345c37-f9b0-4dd6-85bc-36875aa2e55f.png)  
 4. 댓글 하나 더 작성
-![image](https://user-images.githubusercontent.com/122726684/230813498-35031159-9797-4da6-bfdc-feaa0d0b3be8.png)
+![image](https://user-images.githubusercontent.com/122726684/230813498-35031159-9797-4da6-bfdc-feaa0d0b3be8.png)  
 5. 결과 확인
 ![image](https://user-images.githubusercontent.com/122726684/230813544-1ad1ab34-ae5b-4b59-8c34-380cfed98f26.png)
 
@@ -111,15 +111,15 @@ article.comment_set.all()
 ### CREATE
 1. 외래 키 필드를 제외한 form 만들기
 
-![image](https://user-images.githubusercontent.com/122726684/230816206-fe471d08-dddd-4529-b8a8-15951960eeca.png)
+![image](https://user-images.githubusercontent.com/122726684/230816206-fe471d08-dddd-4529-b8a8-15951960eeca.png)  
 2. detail 페이지에서 CommentForm 출력
-![image](https://user-images.githubusercontent.com/122726684/230816722-986dde8f-ce8e-4351-81cc-a172fc75c307.png)
+![image](https://user-images.githubusercontent.com/122726684/230816722-986dde8f-ce8e-4351-81cc-a172fc75c307.png)  
 3. detail 페이지에서 CommentForm 출력  
-![image](https://user-images.githubusercontent.com/122726684/230816846-a234598a-ac6e-4c91-ae8d-66cc20a1db08.png)
+![image](https://user-images.githubusercontent.com/122726684/230816846-a234598a-ac6e-4c91-ae8d-66cc20a1db08.png)  
 4. 댓글 받아오기
 ![image](https://user-images.githubusercontent.com/122726684/230817747-4dc95406-11da-44cf-89c2-7b667611f105.png)
 ![image](https://user-images.githubusercontent.com/122726684/230817230-b0a6b933-d88d-4584-a429-52dca7d94445.png)
-![image](https://user-images.githubusercontent.com/122726684/230817803-ee9478c6-ca7c-4d6b-88fa-6fa74940ac44.png)
+![image](https://user-images.githubusercontent.com/122726684/230817803-ee9478c6-ca7c-4d6b-88fa-6fa74940ac44.png)  
 - save(commit=False): 아직 db에 저장되지 않은 인스턴스를 반환, 저장하기 전에 객체에 대한 사용자 지정 처리를 수행할 때 유용하게 사용
   
 ### READ
@@ -135,8 +135,8 @@ article.comment_set.all()
 ## Comment 추가 사항
 1. 댓글 개수 출력
 - DTL filter: length 사용
-![image](https://user-images.githubusercontent.com/122726684/230819369-c5dee496-4c0b-4162-a148-4feb4978d948.png)
+![image](https://user-images.githubusercontent.com/122726684/230819369-c5dee496-4c0b-4162-a148-4feb4978d948.png)  
 - Queryset API: count() 사용
-![image](https://user-images.githubusercontent.com/122726684/230819426-d5fc66db-003a-413a-99ed-421d9d685c83.png)
+![image](https://user-images.githubusercontent.com/122726684/230819426-d5fc66db-003a-413a-99ed-421d9d685c83.png)  
 2. 댓글이 없는 경우 대체 컨텐츠 출력
 ![image](https://user-images.githubusercontent.com/122726684/230819558-f38f757f-f6f3-4b4e-966a-de00d0e0598a.png)
