@@ -153,7 +153,49 @@ article.comment_set.all()
 - models.py가 아닌 다른 모든 곳에서 유저 모델을 참조할 때 사용
 
 ## 모델 관계 설정
-![image](https://user-images.githubusercontent.com/122726684/230835050-6b78e1d3-a13b-4fff-9e89-8fa2c1591e94.png)  
-- Article 모델에 User 모델을 참조하는 외래 키 작성   
+![image](https://user-images.githubusercontent.com/122726684/230835050-6b78e1d3-a13b-4fff-9e89-8fa2c1591e94.png)
+
+1. Article 모델에 User 모델을 참조하는 외래 키 작성   
 
 ![image](https://user-images.githubusercontent.com/122726684/230835729-96d4fe81-41f8-4be0-957a-62e404acd23b.png)
+
+2. Migration 진행
+
+![image](https://user-images.githubusercontent.com/122726684/230856258-c8b26315-5ada-4c84-bd19-090746ffc2d4.png)
+- 첫번째 화면: 기본적으로 모든 컬럼은 NOT NULL 제약 조건이 있기 때문에 데이터가 없이는 새로 추가되는 외래 키 필드 user_id 가 생성되지 않음, 1 입력하고 enter 진행 
+ 
+
+![image](https://user-images.githubusercontent.com/122726684/230856553-a776a806-470c-45b1-9e3f-b1719affd8a8.png)
+- 두번째 화면: article의 user_id에 어떤 데이터를 넣을 것인지 직접 입력해야함, 1 입력하고 enter 진행, 기존에 작성된 게시글이 있다면 모두 1번 회원이 작성한 것으로 처리됨
+  
+
+## CREATE
+- 인증된 회원의 게시글 작성 구현하기
+- 작성하기 전 로그인 먼저 진행한 상태로 진행
+
+1. ArticleForm의 출력 필드 수정하기  
+
+![image](https://user-images.githubusercontent.com/122726684/230856990-ccf5afcd-1e4d-453b-8224-f854cf0d4a34.png)  
+2. views 에서 게시글 작성 시 작성자 정보가 함께 저장될 수 있도록 save의 commit 옵션 활용  
+
+![image](https://user-images.githubusercontent.com/122726684/230857133-ffa784b8-37f1-48bc-b5c4-9be82f1832e1.png)
+
+## DELETE
+- 게시글 삭제 시 작성자 확인
+
+
+![image](https://user-images.githubusercontent.com/122726684/230857252-1d464a89-0468-4af1-b800-d992faa4aa65.png)
+
+## UPDATE
+- 수정을 요청하려는 사람과 게시글을 작성한 사람을 비교하여 본인의 게시글만 수정 할 수 있도록 함
+
+![image](https://user-images.githubusercontent.com/122726684/230857420-40d99795-9dfa-4c1e-a706-34d328b7a22e.png)
+
+- 해당 게시글의 작성자가 아니라면, 수정/삭제 버튼이 출력하지 않도록 함
+
+![image](https://user-images.githubusercontent.com/122726684/230857540-428c86ab-ae07-4c0d-97da-fa014ac73b2a.png)
+
+## READ
+- index template과 detail template에서 각 게시글의 작성자 출력하기
+
+![image](https://user-images.githubusercontent.com/122726684/230857647-de3764f3-2bce-491f-8814-991e0130ba39.png)
