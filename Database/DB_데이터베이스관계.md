@@ -107,13 +107,13 @@ article=Article.objects.get(pk=1)
 article.comment_set.all()
 ```
 
-## Commenet 구현
+## Comment 구현
 ### CREATE
 1. 외래 키 필드를 제외한 form 만들기
 
-![image](https://user-images.githubusercontent.com/122726684/230816206-fe471d08-dddd-4529-b8a8-15951960eeca.png)  
-2. detail 페이지에서 CommentForm 출력
-![image](https://user-images.githubusercontent.com/122726684/230816722-986dde8f-ce8e-4351-81cc-a172fc75c307.png)  
+![image](https://user-images.githubusercontent.com/122726684/230816206-fe471d08-dddd-4529-b8a8-15951960eeca.png)    
+2. views 페이지에서 CommentForm 넘겨주기  
+![image](https://user-images.githubusercontent.com/122726684/230816722-986dde8f-ce8e-4351-81cc-a172fc75c307.png)    
 3. detail 페이지에서 CommentForm 출력  
 ![image](https://user-images.githubusercontent.com/122726684/230816846-a234598a-ac6e-4c91-ae8d-66cc20a1db08.png)  
 4. 댓글 받아오기  
@@ -140,3 +140,20 @@ article.comment_set.all()
 ![image](https://user-images.githubusercontent.com/122726684/230819426-d5fc66db-003a-413a-99ed-421d9d685c83.png)  
 2. 댓글이 없는 경우 대체 컨텐츠 출력
 ![image](https://user-images.githubusercontent.com/122726684/230819558-f38f757f-f6f3-4b4e-966a-de00d0e0598a.png)
+
+# N:1 (Article-User)
+- Article 모델과 User 모델 간 관계 설정
+- 0개 이상의 게시글은 1개의 회원에 의해 작성 될 수 있음
+
+## User model 참조하기
+1. settings.AUTH_USER_MODEL
+- models.py의 모델 필드에서 User 모델을 참조할 때 사용
+2. get_user_model()
+- 현재 활성화된 User 모델 반환
+- models.py가 아닌 다른 모든 곳에서 유저 모델을 참조할 때 사용
+
+## 모델 관계 설정
+![image](https://user-images.githubusercontent.com/122726684/230835050-6b78e1d3-a13b-4fff-9e89-8fa2c1591e94.png)  
+- Article 모델에 User 모델을 참조하는 외래 키 작성   
+
+![image](https://user-images.githubusercontent.com/122726684/230835729-96d4fe81-41f8-4be0-957a-62e404acd23b.png)
