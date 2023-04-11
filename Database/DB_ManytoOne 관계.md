@@ -77,14 +77,14 @@ class Comment(models.Model):
      
 ![image](https://user-images.githubusercontent.com/122726684/230813184-a4d726d9-b273-4313-bb20-1463d14957a5.png)
 
-![image](https://user-images.githubusercontent.com/122726684/230813225-0fb1f02c-dd2a-4402-8f81-8562edab65ff.png)  
-2. 댓글 속성 값 확인
-![image](https://user-images.githubusercontent.com/122726684/230813286-e7be5fda-ddd9-4852-9ded-b617280f0af2.png)  
-3. comment 인스턴스를 통한 article 값 접근
-![image](https://user-images.githubusercontent.com/122726684/230813369-7b345c37-f9b0-4dd6-85bc-36875aa2e55f.png)  
-4. 댓글 하나 더 작성
-![image](https://user-images.githubusercontent.com/122726684/230813498-35031159-9797-4da6-bfdc-feaa0d0b3be8.png)  
-5. 결과 확인
+![image](https://user-images.githubusercontent.com/122726684/230813225-0fb1f02c-dd2a-4402-8f81-8562edab65ff.png)    
+2. 댓글 속성 값 확인  
+![image](https://user-images.githubusercontent.com/122726684/230813286-e7be5fda-ddd9-4852-9ded-b617280f0af2.png)    
+3. comment 인스턴스를 통한 article 값 접근  
+![image](https://user-images.githubusercontent.com/122726684/230813369-7b345c37-f9b0-4dd6-85bc-36875aa2e55f.png)    
+4. 댓글 하나 더 작성  
+![image](https://user-images.githubusercontent.com/122726684/230813498-35031159-9797-4da6-bfdc-feaa0d0b3be8.png)    
+5. 결과 확인    
 ![image](https://user-images.githubusercontent.com/122726684/230813544-1ad1ab34-ae5b-4b59-8c34-380cfed98f26.png)
 
 ## 관계 모델 참조
@@ -199,3 +199,45 @@ article.comment_set.all()
 - index template과 detail template에서 각 게시글의 작성자 출력하기
 
 ![image](https://user-images.githubusercontent.com/122726684/230857647-de3764f3-2bce-491f-8814-991e0130ba39.png)
+
+# N:1 (Comment-User)
+![image](https://user-images.githubusercontent.com/122726684/231038420-6875f089-ba30-431a-8df4-205ba8f696b8.png)
+
+- Comment 와 User 간 모델 관계 설정
+
+![image](https://user-images.githubusercontent.com/122726684/231038530-54e921a9-e67c-4ca9-8ef9-bfb504882a31.png)
+
+## CREATE
+- 인증된 회원의 댓글 작성 구현하기
+- 작성하기 전 로그인한 상태로 진행
+- CommentForm의 출력 필드 수정
+
+![image](https://user-images.githubusercontent.com/122726684/231038777-b07f69d8-c406-4c81-a90e-e1a3b3b89934.png)  
+- 외래 키 데이터 누락 확인
+
+![image](https://user-images.githubusercontent.com/122726684/231038868-bd4aa90e-5265-470a-8c8c-dc1d94f0a497.png)
+
+## READ
+- detail template에서 각 게시글의 작성자 출력
+
+![image](https://user-images.githubusercontent.com/122726684/231038963-d7e2c82e-be9d-4d04-83ec-a5c135051957.png)
+
+## DELETE
+- 댓글 삭제 시 작성자 확인
+
+![image](https://user-images.githubusercontent.com/122726684/231039107-09ef2d07-2cb9-4405-8966-98edc8839f81.png)
+
+- 해당 댓글의 작성자가 아니라면, 삭제 버튼을 출력하지 않도록 함
+
+![image](https://user-images.githubusercontent.com/122726684/231039201-23d11d3e-9fca-4d38-9cea-28e5632b3b0e.png)
+
+## 인증된 사용자에 대한 접근 제한하기
+- 인증된 사용자의 경우만 댓글 작성 및 삭제 가능
+
+![image](https://user-images.githubusercontent.com/122726684/231039359-a91e796f-8e0b-4b09-a5f9-3fd7b379700f.png)
+
+![image](https://user-images.githubusercontent.com/122726684/231039383-8daed11f-5615-45c5-b547-cce162ab2600.png)
+
+- 비인증 사용자는 CommentForm 볼 수 없게 함
+
+![image](https://user-images.githubusercontent.com/122726684/231039446-969e5fc7-3d58-4896-954f-79b14c2a0496.png)
