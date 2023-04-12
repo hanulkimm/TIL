@@ -85,3 +85,37 @@
 ![image](https://user-images.githubusercontent.com/122726684/231065758-55ba3294-4d45-4fcd-8fe6-d7a70117ed4a.png)
 
 ![image](https://user-images.githubusercontent.com/122726684/231065812-a586af19-c8b1-4471-ac22-eb8ddd791d7c.png)
+
+# M:N (User-User)
+## 개요
+- User 자기 자신과의 M:N 관계 설정을 통한 팔로우 기능 구현하기
+
+## 프로필 Profile
+- url 및 views 함수
+
+![image](https://user-images.githubusercontent.com/122726684/231467339-8588c562-2752-4a6a-962b-851d8db9c47a.png)
+
+- profile template
+
+![image](https://user-images.githubusercontent.com/122726684/231467932-0032126e-cbcb-44a5-a58a-be7339481ee6.png)
+
+- profile template으로 이동할 수 있는 하이퍼 링크 작성
+
+![image](https://user-images.githubusercontent.com/122726684/231468074-b9f74643-c712-47e0-9b75-5db4ffa39045.png)
+
+## 팔로우 Follow
+- ManyToManyField 작성
+
+![image](https://user-images.githubusercontent.com/122726684/231468267-c942befa-c2cc-4a86-93d3-bb956683b3f3.png)
+
+- url 및 view 함수
+
+![image](https://user-images.githubusercontent.com/122726684/231468622-d32d4bc7-4ac7-48e5-92b5-86ce1eae6c60.png)
+
+- 프로필 유저의 팔로잉, 팔로워 수, 팔로우, 언팔로우 버튼 작성
+
+![image](https://user-images.githubusercontent.com/122726684/231468893-676f638a-7d40-4eef-ac5e-f2de64cad832.png)
+
+- 데코레이터 및 인증 권한 추가
+
+![image](https://user-images.githubusercontent.com/122726684/231469187-9ac259af-a8bf-4798-b242-9bcb3ee8aea0.png)
