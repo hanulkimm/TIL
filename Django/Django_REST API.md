@@ -239,8 +239,9 @@ def article_list(request):
   return Response(serializer.data)
 
 @api_list(['GET'])
-def article_list(request,article_pk):
+def article_detail(request,article_pk):
   articles = Article.objects.get(pk=article_pk)
   serializer = ArticleListSerializer(articles)
   return Response(serializer.data)
 ```
+
