@@ -34,8 +34,9 @@ from rest_framework import serializers
 from .models import Article
 
 class ArticleListSerializer(serializers.ModelSerializer):
-  model = Article
-  fields = ('__all__')
+  class Meta:
+    model = Article
+    fields = ('__all__')
 ```
 
 ## GET (게시글 데이터 목록 조회하기)
@@ -53,7 +54,7 @@ def article_list(request):
   serializer = ArticleListSerializer(articles, many=True)
   return Response(serializer.data)
 
-@api_list(['GET'])
+@api_view(['GET'])
 def article_detail(request,article_pk):
   article = Article.objects.get(pk=article_pk)
   serializer = ArticleListSerializer(article)
