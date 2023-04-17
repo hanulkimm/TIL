@@ -249,3 +249,46 @@ class ArticleSerializer(serializers.Modelserializer):
 ```
 
 # Django shortcuts functions
+## get_object_or_404
+- 모델 manager objects에서 get()을 호출하지만, 해당 객체가 없을 땐 기존 DoesNotExist 에외 HTtp40를 raise 함
+```python
+# articles/views.py
+
+from django.shortcuts import get_object_or_404
+
+article = get_object_or_404(Article, pk=article_pk)
+comment = get_object_or_404(Comment, pk=comment_pk)
+```
+## get_list_or_404
+```python
+# articles/views.py
+
+from django.shortcuts import get_object_or_404
+
+articles = get_list_or_404(Article)
+comment = get_list_or_404(Comment)
+```
+
+## Serializer 활용하기
+### 댓글 목록 없애고 특정 Article에서의 모든 댓글을 내려주는 API로 수정하기
+```python
+# articles/views.py
+
+@api_view(['GET','POST'])
+def comment_list(request, article_pk):
+  article = get_objects_or_404(Article, pk=article_pk)
+
+  if request.method=='GET':
+    comments = article.comment_set.all()
+    serializer = CommentSerializer(comments, many=True)
+    return Response(serializer.data)
+
+  if request.method=='POST':
+    serializer = CommentSerializer(data=request.data)
+    if serializer.is_valid(raise_exception=True):
+      serializer.save(article=article)
+      return Response(serializer.data)
+```
+### comment_set 대신 comment로, 댓글 조회 시 article id 삭제
+class CommentSerializer(serializers.ModelSerializer):
+  
