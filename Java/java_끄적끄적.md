@@ -22,3 +22,16 @@ public class Main {
         
     }
 ```
+
+## String
+### 특정 문자 출력
+`System.out.println(s.charAt(i-1))`
+### slice
+`System.out.println(s.substring(i-1,i))`
+
+## charAt
+- 아스키 코드로 변환해주기 때문
+- `-0`을 해주기
+
+## 배열 이쁘게 출력
+`System.out.println(Arrays.toString(arr))`
