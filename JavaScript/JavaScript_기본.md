@@ -66,28 +66,88 @@ console.log("Hello JavaScript")
 ![image](https://user-images.githubusercontent.com/122726684/232644772-de1ab360-a5a4-4e93-9270-d7f8fcd41c97.png)
 
 
-### 변수 선언 키워드
-1. let
+## 변수 선언 키워드
+### 1. let
 - 블록 스코프 지역 변수를 선언
 - 선언과 동시에 원하는 값으로 초기화
 - 재할당 가능 & 재선언 불가능
 
-![image](https://user-images.githubusercontent.com/122726684/232644981-67586528-5193-4305-a101-599012b6983e.png)
-2. const
+![image](https://user-images.githubusercontent.com/122726684/232644981-67586528-5193-4305-a101-599012b6983e.png)  
+
+### 2. const
 - 블록 스코프 읽기 전용 상수를 선언
 - 선언시 반드시 초기값 설정해야 함, 이후에 값 변경 불가능
 - 재할당 불가능, 재선언 불가능
 
 ![image](https://user-images.githubusercontent.com/122726684/232645001-9ca52980-d603-473c-9be6-1bcb4315e7f4.png)
 
-3. var
+### 3. var
 - 재할당 가능, 재선언 가능
 - ES6 이전에 변수를 선언할 때 사용되던 ㅋ워드
 - ES6 이후에는 var 대신 const 와 let 사용 권장
-- 함수 스코프를 가진
+- 함수 스코프를 가짐
 - 변수 선언 시 var, const, let 키워드 중 하나를 사용하지 않으면 자동으로 var 로 선언
 - 호이스팅 되는 특성으로 예기치 못한 문제 발생 가능
   - 호이스팅: 변수를 선언 이전에 참조할 수 있는 현상
+
+## 선언, 할당, 초기화
+### 선언 
+- 변수를 생성하는 행위 또는 시점
+### 할당
+- 선언된 변수에 값을 저장하는 행위 또는 시점
+### 초기화
+- 선언된 변수에 처음으로 값을 저장하는 행위 또는 시점
+
+```js
+let a; // 선언
+console.log(a) // undefined
+
+a = 1 // 할당
+console.log(a) // 1
+
+let a = 1 // 선언 + 할당
+console.lon(a) // 1
+```
+
+## 블록 스코프 (block scope)
+- 중괄호({}) 내부 가르킴
+- 블록 스코프를 가지는 변수는 블록 바깥에서 접근 불가능
+```js
+let x = 1
+
+if (x===1) {
+  let x =2
+  console.log(x) // 2
+}
+console.log(x) // 1
+```
+```js
+let x = 1
+
+if (x===1) {
+  x =2
+  console.log(x) // 2
+}
+console.log(x) // 2
+```
+## 함수 스코프
+- 함수 중괄호 내부를 가리킴
+- 함수 바깥에서 접근 불가능
+```js
+let x = 2
+function foo() {
+  let x = 1
+  console.log(x) // 1
+}
+foo()
+console.log(x) // 2
+```
+## 호이스팅 (hoisting)
+- 변수를 선언 이전에 참조할 수 있는 현상
+- var로 선언된 변수는 선언 이전에 참조할 수 있으며 이러한 현상 호이스팅이라고 함
+- 변수 이전 이전에 위치에서 접근 시 undefined를 반환
+- 
+
 
 ## 정리
 - Airbnb 스타일 가이드에서는 기본적으로 const 사용 권장
@@ -322,3 +382,16 @@ Array.forEach(function(element)) {
 ## 정리
 ![image](https://user-images.githubusercontent.com/122726684/232661227-c685e956-c1d3-480b-be83-9ede5e7e7d60.png)
 
+## optional chaining
+- `?.` : 뒤에 내용 우선 무시
+- `??` : 앞의 내용 undefined/null 이면 뒤에꺼
+```js
+const obj = {
+  a:1
+}
+console.log(obj.a) // 1
+console.log(obj.a.value) // undefined
+// console.log(obj.b.value) ERROR
+console.log(obj.b?.value) // undefined
+console.log(obj.b?.value ?? 'hoho')  // hoho
+```
