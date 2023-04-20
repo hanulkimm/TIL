@@ -396,3 +396,11 @@ const obj = {b:2, c:3, d:4}
 const newObj = {a:1, ...obj, e:5}
 console.log(newObj) // { a: 1, b: 2, c: 3, d: 4, e: 5 }
 ```
+
+## JSON
+- JavaScript Object Notation
+- Key-Value 형태로 이루어진 자료 표기법
+- JavaScript의 object와 유사한 구조를 가지고 있지만 Object는 그 자체로 타입이고, JSON은 형식이 있는 "문자열"
+- JSON을 Object로 사용하기 위해서는 변환 작업이 필요
+
+![image](https://user-images.githubusercontent.com/122726684/233224545-6c647bc1-c4d5-472c-9349-51a2fc3b82de.png)
