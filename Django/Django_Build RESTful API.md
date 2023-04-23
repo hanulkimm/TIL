@@ -239,6 +239,7 @@ class ArticleSerializer(serializers.Modelserializer):
 ## 특정 게시글에 작성된 댓글의 개수 출력하기
 - 새로운 필드 추가 
 - source : 필드를 채우는 데 사용할 속성의 이름, 점 표기법을 사용하여 속성을 탐색 할 수 있음
+- 특정 필드를 override 혹은 추가한 경우 read_only_fields가 동작하지 않음
 ```python
 # articles/serializers.py
 class ArticleSerializer(serializers.Modelserializer):
@@ -256,7 +257,6 @@ class ArticleSerializer(serializers.Modelserializer):
 # articles/views.py
 
 from django.shortcuts import get_object_or_404
-
 article = get_object_or_404(Article, pk=article_pk)
 comment = get_object_or_404(Comment, pk=comment_pk)
 ```
@@ -291,5 +291,28 @@ def comment_list(request, article_pk):
       return Response(serializer.data)
 ```
 ### comment_set 대신 comment로, 댓글 조회 시 article id 삭제
-class CommentSerializer(serializers.ModelSerializer):
+```python
+class ArticleListSerializer(serializers.ModelSerializer):
+  comment_set = CommentSerializer(many=True, read_only=True)
+  comment_count = serializers.Interfield(source='comment_set.count', read_only=True)
+
+  class Meta:
+    model = Article
+    fields = ('id', 'title', 'content', 'comment_set', 'comment_count',)
   
+  def to_representation(self, instance) :
+    rep = super().to_representation(instance)
+    rep['comments'] = rep.pop('comment_set', [])
+    return rep
+  
+class CommentSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Comment
+    fields = '__all__'
+    read_only_fields = ('article',)
+
+  def to_representation(self, instance):
+    rep = super().to_representation(instance)
+    rep.pop('article', None)
+    return rep
+```
