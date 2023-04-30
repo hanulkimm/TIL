@@ -36,9 +36,9 @@
   <script>
     document.querySelector('#title') 
     // <h1 id="title">DOM 조작</h1>
-    document.querySelector('.title') 
+    document.querySelector('.text') 
     // <p class="text">querySelector</p>
-    document.querySelectorAll('.title') 
+    document.querySelectorAll('.text') 
     // NodeList(2) [p.text, p.text]
     document.querySelectorAll('body > ul > li') 
   </script>
