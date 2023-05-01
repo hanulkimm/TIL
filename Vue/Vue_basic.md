@@ -241,7 +241,72 @@
     })
   </script>
 ```
+- 실행 함수를 vue method로 대체 가능
+  - 감시 대상 data의 이름으로 객체 생성--> 실행하고자 하는 method를 handler에 문자열 형태로 할당
+```html
+  <div id="app">
+    <h3>Change Name</h3>
+    <p>{{name}}</p>
+    <input type="text" v-model="name">
+
+    <h3>push myObj</h3>
+    <p>{{myObj}}</p>
+    <button @click="itemChange">change item</button>
+  </div>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      data:{
+        name:'',
+        myObj:{completed:true}
+      },
+      methods:{
+        nameChange: function(){
+          console.log('name changed')
+        },
+        itemChange : function(){
+          this.myObj.completed = !this.myObj.completed
+        }
+      },
+      watch:{
+        name:{
+          handler: 'nameChange'
+        },
+        myObj:{
+          handler : function(val){
+            console.log(val)
+          },
+          deep:true
+        },
+      }
+    })
+  </script>
+```
+
 ## filters
 - 텍스트 형식화를 적용할 수 있는 필터
 - interpolation 혹은 v-bind를 이용할 때 사용 가능
-- 
+- 필터는 자바스크립트 표현식 마지막에 `|`(파이프)와 함께 추가되어야 함
+- chaining 가능
+- 예시: 홀수 번호 출력
+```html
+ <div id="app">
+    <p>{{numbers}}</p>
+  </div>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      data:{
+        numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      },
+      filters:{
+        getOddNumbers:function(nums){
+          const new_arr = nums.filter((el)=>{
+            return el%2
+          })
+          return new_arr
+        }
+      }
+    })
+  </script>
+```
