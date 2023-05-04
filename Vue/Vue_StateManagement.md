@@ -46,3 +46,62 @@
 - getters에서 계산된 값은 state에 영향을 미치지 않음
 - 첫번째 인자로 state, 두 번째 인자로 getter를 받음
 
+## Vuex 실습
+### 시작하기 전
+- 객체 메서드 축약형 사용할 것
+
+![image](https://user-images.githubusercontent.com/122726684/236121774-f0355d4e-ccc2-40e2-9bf1-e7fc36a771c1.png)
+
+## vuex의 핵심 4가지
+1. state
+- 중앙에서 관리하는 모든 상태 정보
+- `$store.state`로 접근 가능
+- store의 state에 message 데이터 정의
+- component에서 state 사용
+  - `$store.state`로 바로 접근하기 보다 compumted에 정의 후 접근하는 것 권장
+
+![image](https://user-images.githubusercontent.com/122726684/236122190-f6bc82a7-848c-4aea-ae72-ced57ca05cd0.png)
+
+![image](https://user-images.githubusercontent.com/122726684/236122206-8d4e416d-21d0-4e56-8b22-752eae984b0a.png)
+
+2. actions
+- state를 변경할 수 있는 mutations 호출
+- component에서 dispatch()에 의해 호출됨
+- `dispatch(A,B)`
+  - A: 호출하고자 하는 actions 함수
+  - B: 넘겨주는 데이터(payload)
+
+![image](https://user-images.githubusercontent.com/122726684/236122487-b307cdfb-b181-4d4a-91f7-c3edd71931d3.png)
+
+- actions의 첫번째 인자는 context
+  - context는 store의 전반적인 속성을 모두 가지고 있음
+  - context.state와 context.getters를 통해 mutations를 호출하는 것이 모두 가능
+  - actions에서 state를 직접 조작하는 것은 삼가야 함
+- actions의 두번째 인자는 payload
+  - 넘겨준 데이터를 받아서 사용
+
+3. mutations
+- actions에서 commit()을 통해 mutations 호출하기
+- state를 변경하는 유일한 방법
+- component 또는 actions()에서 commit()에 의해 호출됨
+- `commit(A,B)`
+  - A: 호출하고자 하는 mutations 함수
+  - B: payload
+
+![image](https://user-images.githubusercontent.com/122726684/236123317-dca4e38e-2e66-4608-9741-6eef32d6ea57.png)
+
+- mutations 함수의 첫번째 인자는 state
+- 두번째 인자는 payload
+
+![image](https://user-images.githubusercontent.com/122726684/236123396-6ff608e9-a28b-4c42-9cf0-bc6f05fb14d7.png)
+
+4. getters
+- getters는 state를 활용한 새로운 변수
+- getters 함수의 첫번째 인자는 state, 두 번째 인자는 getters
+
+![image](https://user-images.githubusercontent.com/122726684/236123483-c84b82cc-4053-4ba2-85d5-b2bcc60347d0.png)
+
+![image](https://user-images.githubusercontent.com/122726684/236123521-16b9d10d-d54d-4769-82e6-4044b68da1f2.png)
+
+![image](https://user-images.githubusercontent.com/122726684/236123563-72bc879e-4eb1-4260-865c-734fab65f647.png)
+
