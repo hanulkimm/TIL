@@ -291,8 +291,9 @@
 - 예시: 홀수 번호 출력
 ```html
  <div id="app">
-    <p>{{numbers}}</p>
+    <p>{{numbers|getOddNumbers}}</p>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script>
     const app = new Vue({
       el:'#app',
@@ -310,3 +311,31 @@
     })
   </script>
 ```
+
+# Vue Style Guide
+## 우선 순위 특징
+### A: 필수
+- 오류를 방지하는데 도움이 되므로 어떤 경우에도 규칙을 학습하고 준수
+1. v-for는 항상 key와 함께 사용하기
+- 데이터의 예측 가능한 행동을 유지 시키기 위해(객체 불변성)
+2. v-for를 쓴 엘리멘트에 절대 v-if를 사용하지 말기
+### 헷갈리는 2가지 경우
+a. 목록의 항목을 필터링 할 때
+- v-for가 v-if보다 우선순위가 높음
+- 일부분만 렌더링하고 싶은데도 불구하고 v-for 가 우선순위를 가지기 때문에 v-if를 써도 모든 것 반복해야 함
+
+![image](https://user-images.githubusercontent.com/122726684/236674430-0855e728-2f37-4921-a9fd-39c4da5f6a14.png)
+
+b. 숨김 목록의 렌더링을 피할 때
+- v-if 컨테이너 엘리먼트 옮기기
+
+![image](https://user-images.githubusercontent.com/122726684/236674481-4a82b2cf-1556-497d-bb93-6b3533cb0f43.png)
+
+### B: 적극 권장
+- 규칙을 어겨도 코드는 여전히 실행, 규칙 위반은 드물어야 함
+
+### C: 권장
+- 일관성을 보장하도록 임의의 선택할 수 있음
+
+### D: 주의 필요
+- 잠재적 위험 특성을 고려함
