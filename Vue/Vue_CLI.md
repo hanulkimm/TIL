@@ -197,3 +197,25 @@
 - 메서드, 변수명 등은 JavaScript에서 사용함: camelCase
 
 # Lifecycle Hooks
+
+![image](https://github.com/hanulkimm/TIL/assets/122726684/daf86731-5f8b-4e9e-a6d4-e5469db7c74a)
+
+## created
+- vue instance가 생성된 후 호출됨
+- data, computed 등의 설정이 완료된 상태
+- 서버에서 받은 데이터를 vue instance의 data에 할당하는 로직 구현하기
+- 단, mount 되지 않아 요소에 접근할 수 없음
+
+## mounted
+- vue instance가 요소에 mount된 후 호출됨
+- mount된 요소를 조작할 수 있음
+- created의 경우, mount되기 전이기 때문에 DOM에 접근할 수 없으므로 동작하지 않음
+- mounted는 주석 처리
+
+## updated
+- 데이터가 변경되어 DOM에 변화를 줄 때 호출됨
+
+## 특징
+- instance마다 각각의 lifecycle을 가지고 있음
+- component 별로 life cycle hook을 정의할 수 있음
+
