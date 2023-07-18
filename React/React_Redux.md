@@ -49,3 +49,5 @@ function Cart(){
   return (생략)
 }
 ```
+
+## store의 state 변경

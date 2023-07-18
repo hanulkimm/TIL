@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import styled from 'styled-components';
 import {Nav, Tab} from 'react-bootstrap'
 import {Context1} from './../App.js'
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "../store.js";
 // import './../App.css'
 
 // styled components
@@ -17,6 +19,10 @@ let Box = styled.div`
 `
 
 function Detail(props) {
+
+  let state = useSelector((state)=>state)
+  let dispatch = useDispatch();
+  console.log(state.info)
   
   let {stock, shoes} = useContext(Context1);
 
@@ -58,7 +64,7 @@ function Detail(props) {
           <h4 className="pt-5">{shoe.title}</h4>
           <p>{props.shoes[id].content}</p>
           <p>{props.shoes[id].price}원</p>
-          <button className="btn btn-danger">주문하기</button> 
+          <button className="btn btn-danger" onClick={()=>{dispatch((addItem(shoe)))}}>주문하기</button> 
         </div>
       </div>
 
