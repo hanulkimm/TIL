@@ -1,19 +1,28 @@
 import { Button, Navbar, Container, Nav, Row, Col } from 'react-bootstrap';
 import './App.css';
 import puppyImg from './img/puppy.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import data from './data';
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom';
 import Detail from './routes/Detail';
+import axios from 'axios';
 
 function App() {
 
   let [shoes, setShoes] = useState(data);
   let navigate = useNavigate();
+  let [input, setInput] = useState(0);
+  let [clickBtn, setClickBtn] = useState(1);
+  let [showBtn, setShowBtn] = useState(true);
+  useEffect(()=>{
+    if (isNaN(input)) {
+      alert('놉')
+    }
+  }, [input])
 
   return (
     <div className="App">
-
+        <input type="text" onChange={(e)=>setInput(e.target.value)}/>
       <Navbar bg="light" data-bs-theme="light">
         <Container>
           <Navbar.Brand href="#home">개밥바라기</Navbar.Brand>
@@ -34,53 +43,44 @@ function App() {
             <div className="container">
               <div className="row">
                 {
-                  shoes.map((shoe)=>{
+                  shoes.map((shoe,i)=>{
                     return(
-                      <Shoe shoe={shoe} />
+                      <Shoe shoe={shoe} key={i} />
                     )
                   })
                 }
               </div>
             </div>
+            
+            {
+              showBtn 
+              ? <button onClick={()=>{
+                  setClickBtn(clickBtn+1)
+                  if (clickBtn==3) {
+                    setShowBtn(false)
+                  }
+                  axios.get(`https://codingapple1.github.io/shop/data${clickBtn}.json`)
+                  .then((res)=>{
+                    // console.log(res.data)
+                    let copy = [...shoes]
+                    let newCopy = copy.concat(res.data)
+                    setShoes(newCopy)
+                  })
+                
+
+                }} >더보기</button>
+              : null
+            }
+           
           </>
         }/>
 
-        <Route path='/about' element={<About/>}>
-          <Route path='member' element={<div>멤버임</div>}/>
-          <Route path='location' element={<About/>}/>
-        </Route>
+        <Route path="/detail/:id" element={<Detail shoes={shoes}/>}/>
 
-
-        <Route path='/detail' element={<Detail/>}/>
-        <Route path='/event' element={<Element/>}>
-          <Route path='one' element={<div>첫 주문시 서비스</div>}/>
-          <Route path='two' element={<div>생일 기념 쿠폰</div>}/>
-        </Route>
-        {/* <Route path='/about' element={<About/>}/>
-        <Route path='/about/member' element={<About/>}/>
-        <Route path='/about/location' element={<About/>}/> */}
       </Routes>
 
     </div>
   );
-}
-
-function Element() {
-  return(
-    <div>
-      <h4>오늘의 이벤트</h4>
-      <Outlet></Outlet>
-    </div>
-  )
-}
-
-function About() {
-  return(
-    <div>
-      <h4>회사 정보임</h4>
-      <Outlet></Outlet>
-    </div>
-  )
 }
 
 
@@ -88,12 +88,12 @@ function Shoe(props) {
   return(
     <div className="col-md-4">
       <img src={`https://codingapple1.github.io/shop/shoes${props.shoe.id+1}.jpg`} width="80%" alt="" />
+      {/* <img src='https://recipe1.ezmember.co.kr/cache/recipe/2019/11/16/fc6e5e42d13ae19e8c8a67f4d15259211.png' width="80%" alt="" /> */}
       <h4>{props.shoe.title}</h4>
       <p>{props.shoe.content}</p>
     </div>
   )
 }
-
 
 
 export default App;
