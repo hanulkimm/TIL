@@ -1,15 +1,19 @@
 import { Button, Navbar, Container, Nav, Row, Col } from 'react-bootstrap';
 import './App.css';
 import puppyImg from './img/puppy.png';
-import { useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import data from './data';
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom';
 import Detail from './routes/Detail';
 import axios from 'axios';
+import Cart from './routes/Cart';
+
+export let Context1 = createContext();
 
 function App() {
 
   let [shoes, setShoes] = useState(data);
+  let [stock, setStock] = useState([10,11,12]);
   let navigate = useNavigate();
   let [input, setInput] = useState(0);
   let [clickBtn, setClickBtn] = useState(1);
@@ -22,7 +26,7 @@ function App() {
 
   return (
     <div className="App">
-        <input type="text" onChange={(e)=>setInput(e.target.value)}/>
+      <input type="text" onChange={(e)=>setInput(e.target.value)}/>
       <Navbar bg="light" data-bs-theme="light">
         <Container>
           <Navbar.Brand href="#home">개밥바라기</Navbar.Brand>
@@ -71,11 +75,18 @@ function App() {
                 }} >더보기</button>
               : null
             }
-           
           </>
         }/>
 
-        <Route path="/detail/:id" element={<Detail shoes={shoes}/>}/>
+        <Route path="/detail/:id" element={
+          <Context1.Provider value={{stock, shoes}}>
+            <Detail shoes={shoes}/>
+          </Context1.Provider>
+        }/>
+
+        <Route path='/cart' element={<Cart/>}>
+
+        </Route>
 
       </Routes>
 
