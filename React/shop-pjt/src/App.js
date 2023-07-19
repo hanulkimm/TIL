@@ -1,16 +1,25 @@
 import { Button, Navbar, Container, Nav, Row, Col } from 'react-bootstrap';
 import './App.css';
 import puppyImg from './img/puppy.png';
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState, lazy, Suspense } from 'react';
 import data from './data';
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom';
-import Detail from './routes/Detail';
 import axios from 'axios';
-import Cart from './routes/Cart';
+import { useQuery } from '@tanstack/react-query';
+
+const Detail = lazy(()=>import('./routes/Detail.jsx'));
+const Cart = lazy(()=>import('./routes/Cart.jsx'));
+
+// import Detail from './routes/Detail';
+// import Cart from './routes/Cart';
 
 export let Context1 = createContext();
 
 function App() {
+
+  useEffect(()=>{
+    localStorage.setItem('watched', JSON.stringify([]))
+  },[])
 
   let [shoes, setShoes] = useState(data);
   let [stock, setStock] = useState([10,11,12]);
@@ -24,6 +33,12 @@ function App() {
     }
   }, [input])
 
+  let result = useQuery('작명', ()=>
+  axios.get('https://codingapple1.github.io/userdata.json')
+  .then((a)=>{ return a.data })
+  )
+  console.log(result.data)
+
   return (
     <div className="App">
       <input type="text" onChange={(e)=>setInput(e.target.value)}/>
@@ -36,6 +51,7 @@ function App() {
             <Nav.Link onClick={()=>{navigate('/')}}>Home</Nav.Link>
             <Nav.Link onClick={()=>{navigate('/detail')}} >Detail</Nav.Link>
           </Nav>
+          <Nav className='ms-auto'>{result.isLoading ? '로딩중' : result.name}</Nav>
         </Container>
       </Navbar>
 
@@ -80,7 +96,9 @@ function App() {
 
         <Route path="/detail/:id" element={
           <Context1.Provider value={{stock, shoes}}>
-            <Detail shoes={shoes}/>
+            <Suspense fallback={<div>로딩중임</div>}>
+              <Detail shoes={shoes}/>
+            </Suspense>
           </Context1.Provider>
         }/>
 

@@ -22,7 +22,6 @@ function Detail(props) {
 
   let state = useSelector((state)=>state)
   let dispatch = useDispatch();
-  console.log(state.info)
   
   let {stock, shoes} = useContext(Context1);
 
@@ -32,17 +31,30 @@ function Detail(props) {
     return shoe.id==id; // ===이면 안됨!! 
   })
 
+
   let [alert, setAlert] = useState(true);
   let [tab, setTab] = useState(0);
-
+  
+  // 왜 안 됨?
   useEffect(()=>{
+    console.log(shoe.id)
+    let newWatched = localStorage.getItem('watched')
+    newWatched = JSON.parse(newWatched)
+    console.log(newWatched)
+    newWatched.push(shoe.id)
+    localStorage.setItem('watched',JSON.stringify(newWatched) )
+
+  },[])
+  
+  useEffect(()=>{
+
     let a = setTimeout(()=>{setAlert(false)}, 2000)
     // useEffect 동작 전에 실행
     return ()=>{
       clearTimeout(a)
     }
-    console.log(1)
   }, [])
+
   
   return(
     <div className="container">

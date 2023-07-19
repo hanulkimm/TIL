@@ -2,15 +2,24 @@ import {Table} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeName } from '../store/userSlice.js';
 import { changeAmount } from './../store.js';
+import { useState, memo } from 'react';
+
+let Child = memo(
+  function(){
+  return <div>자식임</div>
+})
 
 function Cart() {
   let state = useSelector((state)=>state)
   let dispatch = useDispatch();
   console.log(state.user)
+  let [count, setCount] = useState(0);
+  
 
   return(
     <div>
-
+      <Child></Child>
+      <button onClick={()=>{setCount(count+1)}}>+</button>
       <Table>
         <thead>
           <tr>
