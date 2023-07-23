@@ -41,7 +41,7 @@ function App() {
 
   return (
     <div className="App">
-      <input type="text" onChange={(e)=>setInput(e.target.value)}/>
+      {/* <input type="text" onChange={(e)=>setInput(e.target.value)}/> */}
       <Navbar bg="light" data-bs-theme="light">
         <Container>
           <Navbar.Brand href="#home">개밥바라기</Navbar.Brand>
