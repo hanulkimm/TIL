@@ -1,4 +1,19 @@
-## Redux
+## Redux란?
+- Javascript 상태 관리 라이브러리
+
+![image](https://github.com/hanulkimm/codingtestprep/assets/122726684/63d801f2-6196-4f1b-bf7d-42333a12908b)
+
+### Store
+- 상태가 관리되는 하나의 공간
+- 컴포넌트에서 상태 정보가 필요할 때 스토어에 접근한다.
+### Action
+- 앱에서 스토어에 운발할 데이터
+- JSON 형태로 되어있음
+### Reducer
+- Action을 Reducer를 통해 Store에 전달
+- Reducer가 주문을 보고 Store의 상태를 업데이트
+- Action을 Reducer에 전달하기 위해서는 dispatch() 메서드를 사용해야 함
+
 
 ### 설치
 ```
